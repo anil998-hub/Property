@@ -1,0 +1,18 @@
+# Drupal specific
+/sites/default/files/
+/sites/default/private/
+/sites/*/settings.local.php
+/sites/default/config/
+/vendor/
+composer.lock
+.DS_Store
+Thumbs.db
+*.log
+/sites/
+/vendor/
+/core/
+/sites/default/files/
+*.log
+.DS_Store
+Thumbs.db
+composer.lock
