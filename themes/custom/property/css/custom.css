@@ -1,0 +1,738 @@
+/* Add this at the top of your CSS file */
+/*
+Source - https://stackoverflow.com/a/49046116
+Posted by MD JAHIRUL ISLAM
+Retrieved 2026-06-10, License - CC BY-SA 3.0
+*/
+
+  @font-face {
+  font-family: 'icomoon';
+  src: url('icomoon.eot');
+  src: url('icomoon.eot#iefix') format('embedded-opentype'), url('dilatefonts/icomoon.ttf') format('truetype'), url('icomoon.woff') format('woff'), url('icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?xxxxxxxx');
+  src: url('../fonts/icomoon.eot?xxxxxxxx#iefix') format('embedded-opentype'),
+       url('../fonts/icomoon.ttf?xxxxxxxx') format('truetype'),
+       url('../fonts/icomoon.woff?xxxxxxxx') format('woff'),
+       url('../fonts/icomoon.woff2?xxxxxxxx') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* Then use the font */
+.my-icon {
+  font-family: 'icomoon' !important;
+}
+/* Your navigation style */
+.navigation li.has-child {
+    position: relative;
+}
+.navigation li.has-child > a:after {
+  transition: all .3s ease;
+  position: absolute;
+  right: 0;
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  content: "\f107";  /* Font Awesome down arrow */
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+.icon-location:before {
+    content: "\f3c5" !important;     /* Font Awesome location arrow [citation:2][citation:5] */
+    font-family: 'FontAwesome';
+    font-weight: normal;
+}
+#footer .footer-menu-list.style-2 ul li a:after {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: "\f054" !important; 
+}
+/* .navigation li.has-child > a:after {
+    font-family: 'icomoon' !important;  
+    content: "";   */
+    /* font-size: 14px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1; */
+    
+    /* Important for icon fonts */
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
+/* } */
+.page-title.home01 {
+    background-image: url(/sites/default/files/2026-05/page-title-1.246f2c2a.jpg)!important;
+    background-attachment: fixed!important;
+    padding: 154px 0 258px !important;
+    background-size: cover !important;
+    background-position: center !important; 
+    
+}
+
+
+.page-title {
+    position: relative;
+    z-index: 10;
+    background-position: 50%;
+    background-attachment: fixed;
+}
+#views-exposed-form-property-block-1 {
+    display: none;
+}
+#views-exposed-form-trading-block-1 {
+  display: none;  
+}
+
+/* #edit-message {
+  display: none;
+} */
+#edit-subscriptions-wrapper {
+  display: none;
+}
+#edit-mail-0-value--description {
+  display: none;
+}
+#edit-preview {
+  display: none;
+}
+
+
+.form-item--phone-number{
+width: 630px;
+
+}
+.phone{
+  width: 630px;
+}
+
+.categories-item.active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.categories-item.active h5,
+.categories-item.active p {
+  color: white;
+}
+
+.categories-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.categories-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.widget-menu-tab .item-title {
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.widget-menu-tab .item-title:hover {
+  background-color: #f0f0f0;
+}
+
+.widget-menu-tab .item-title.active {
+  background-color: #F1913D;
+  color: white;
+  border-radius: 4px;
+}
+
+
+
+
+
+/* Property Detail Page Styles */
+.property-details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.property-main-info {
+  flex: 2;
+  min-width: 250px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.property-contact-section {
+  flex: 1;
+  min-width: 300px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.property-stats {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.stat {
+  background: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+}
+
+.contact-title {
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.webform-wrapper {
+  margin: 20px 0;
+}
+
+.seller-info {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.property-title {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+
+
+
+/* CSS Marquee - Right to Left */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marqueeRTL 20s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-block;
+  width: 188.333px;
+  margin-right: 30px;
+  vertical-align: middle;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* CSS Marquee - Right to Left */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marqueeRTL 20s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-block;
+  width: 188.333px;
+  margin-right: 30px;
+  vertical-align: middle;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  direction: rtl;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marqueeRTL 20s linear infinite;
+  width: fit-content;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 188.333px;
+  margin-right: 30px;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Star icons - make sure you have font icons or use Unicode */
+.icon-star {
+  display: inline-block;
+  font-size: 20px;
+  font-style: normal;
+}
+
+/* If using Font Awesome or similar */
+.icon-star.filled::before {
+  content: "★";
+  color: #FFD700; /* Gold/yellow color for filled stars */
+}
+
+.icon-star.empty::before {
+  content: "☆";
+  color: #CCCCCC; /* Light gray for empty stars */
+}
+
+/* Alternative: If you're using actual image icons */
+.icon-star.filled {
+  background-image: url('star-filled.png');
+  /* or color: gold; */
+}
+
+.icon-star.empty {
+  background-image: url('star-empty.png');
+  /* or color: lightgray; */
+}
+
+
+.webform-button--submit
+{
+background-color: var(--Primary);
+
+    font-size: 16px;
+    line-height: 22.4px;
+    height: 50px;
+    background-color: var(--White);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: var(--Text-white);
+    width: max-content;
+    gap: 10px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+
+}
+
+
+
+
+
+
+
+
+/* ============================================
+   FIGMA PERFECT MATCH - For Sale Search Widget
+   "For sale | Place, neighborhood, school or agent... | Search"
+   Based on your exact HTML structure
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main widget container */
+.wg-filter {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eef2f8;
+  transition: all 0.2s ease;
+}
+
+/* Form title / content area */
+.wg-filter .form-title {
+  padding: 1.25rem 1.5rem;
+}
+
+/* Form layout - horizontal row like Figma */
+.wg-filter form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   DROPDOWN: "For sale" style
+   Converting select to look like Figma dropdown
+   ============================================ */
+.wg-filter .form-item--filter {
+  flex-shrink: 0;
+  min-width: 130px;
+}
+
+.wg-filter .form-select {
+  width: 100%;
+  padding: 0.85rem 2rem 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 3rem;
+  color: #1e293b;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1.1rem center;
+  background-size: 1rem;
+  transition: all 0.2s;
+}
+
+.wg-filter .form-select:hover {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.wg-filter .form-select:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+/* Change the first option appearance */
+.wg-filter .form-select option {
+  font-weight: 500;
+  background: white;
+  color: #1e293b;
+}
+
+/* ============================================
+   SEARCH INPUT: "Place, neighborhood, school or agent..."
+   ============================================ */
+.wg-filter .form-item--keys {
+  flex: 2;
+  min-width: 260px;
+}
+
+.wg-filter .form-text {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #f9fcff;
+  border: 1px solid #e2e8f0;
+  border-radius: 3rem;
+  transition: all 0.2s;
+  outline: none;
+  color: #1e293b;
+}
+
+.wg-filter .form-text:focus {
+  border-color: #e67e22;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.08);
+}
+
+.wg-filter .form-text::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   SEARCH BUTTON: "Search" style
+   ============================================ */
+.wg-filter .container-inline {
+  flex-shrink: 0;
+}
+
+/* .wg-filter .form-submit {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+} */
+
+.wg-filter .form-submit:hover {
+  background-color: #0a0602;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -8px rgba(230, 126, 34, 0.4);
+}
+
+.wg-filter .form-submit:active {
+  transform: translateY(1px);
+}
+
+/* ============================================
+   Remove any extra labels (since Figma has no visible labels)
+   ============================================ */
+.wg-filter .form-item__label {
+  display: none;
+}
+
+/* Remove any extra spacing from views exposed form */
+.wg-filter .views-exposed-form__item {
+  margin: 0;
+}
+
+/* ============================================
+   Optional: Add "For sale" text as pseudo-element
+   to match Figma exactly (since select shows "- Any -" by default)
+   Override the select to show "For sale" as first option
+   ============================================ */
+/* This makes the select match Figma's "For sale" text */
+.wg-filter .form-select option:first-child {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* If you want to change the selected value display to "For sale" */
+.wg-filter .form-select {
+    font-weight: 600;
+    padding: 17px 0;
+}
+
+/* ============================================
+   RESPONSIVE - Mobile & Tablet
+   ============================================ */
+@media (max-width: 700px) {
+  .wg-filter {
+    max-width: 100%;
+    border-radius: 1.25rem;
+  }
+
+  .wg-filter form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .wg-filter .form-title {
+    padding: 1.25rem;
+  }
+
+  .wg-filter .form-item--filter {
+    width: 100%;
+  }
+
+  .wg-filter .form-select,
+  .wg-filter .form-text {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .wg-filter .form-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wg-filter .form-title {
+    padding: 1rem;
+  }
+
+  .wg-filter .form-select,
+  .wg-filter .form-text {
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .wg-filter .form-submit {
+    font-size: 0.85rem;
+    padding: 0.65rem 1.2rem;
+  }
+}
+
+/* ============================================
+   HOVER EFFECTS - Figma polish
+   ============================================ */
+.wg-filter:hover {
+  box-shadow: 0 24px 40px -16px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.25s ease;
+}
+
+/* Focus states for accessibility */
+input:focus-visible,
+select:focus-visible,
+input[type="submit"]:focus-visible {
+  outline: 2px solid #e67e22;
+  outline-offset: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions {
+    margin-inline-end: var(--space-m);
+    width: 77%;
+} */
+/* Center the form using only the form ID */
+#user-login-form {
+  max-width: 480px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block;
+}
+
+/* Style form items - using ID and element selectors only */
+#user-login-form .js-form-item {
+  margin-bottom: 1.5rem;
+}
+
+/* Style labels */
+#user-login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Style input fields */
+#user-login-form input[type="text"],
+#user-login-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style submit button container */
+#user-login-form .send-wrap {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Style submit button */
+#user-login-form button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* If you need vertical centering on the page - use with caution */
+/* This only affects the form's position relative to body */
+body > #user-login-form:first-child:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

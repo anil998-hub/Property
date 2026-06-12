@@ -1,0 +1,31 @@
+{# Display all trading terms #}
+
+
+<div class="widget-tabs style-2 style-border-primary">
+	{% if trading_terms %}
+
+
+		<ul class="widget-menu-tab ">
+			{% for term in trading_terms %}
+				<li class="item-title " id="{{ term.id }}">{{ term.name }}</li>
+			{% endfor %}
+		</ul>
+
+	{% endif %}
+
+
+	{% if title %}
+		<h3>{{ title }}</h3>
+	{% endif %}
+	{% for row in rows %}
+
+		{%
+set row_classes = [
+default_row_class ? 'views-row',
+]
+%}
+		<div{{row.attributes.addClass(row_classes)}}>
+			{{- row.content -}}
+		</div>
+	{% endfor %}
+</div>

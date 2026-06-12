@@ -1,0 +1,15 @@
+name: Property
+description: 'This is property theme'
+type: theme
+core_version_requirement: ^10
+package: Custom
+libraries:
+  - property/global-styling
+base theme: claro
+
+regions:
+  header: Header
+  primary_menu: Primary Menu
+  sidebar: Sidebar
+  content: Content
+  footer: Footer

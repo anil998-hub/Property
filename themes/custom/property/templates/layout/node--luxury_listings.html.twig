@@ -1,0 +1,348 @@
+<section class="flat-title">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="title-inner">
+					<ul class="breadcrumb">
+						<li>
+							<a class="home fw-6 text-color-3" href="/">Home</a>
+						</li>
+						<li>{{ node.title.value|striptags|trim }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="gallery-swiper-started" class="section-property-image">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-12">
+				{% if node.field_city_image|length %}
+					{% set total_images = node.field_city_image|length %}
+					<div class="wrap-image">
+						<div class="image img-1">
+							{% if total_images >= 1 %}
+								{% set first_image = node.field_city_image.0 %}
+								<a data-fancybox="gallery" class="image-wrap relative d-block" href="{{ file_url(first_image.entity.fileuri) }}">
+									<img src="{{ file_url(first_image.entity.fileuri) }}" alt="{{ first_image.alt ?: 'Gallery image 1' }}" title="{{ first_image.title ?: 'Image 1' }}" loading="lazy" width="1095" height="771" decoding="async" class="lazyload">
+								</a>
+							{% endif %}
+							<div class="tag-property">
+								<div class="icon">
+									<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M1.875 13.125L6.17417 8.82583C6.34828 8.65172 6.55498 8.51361 6.78246 8.41938C7.00995 8.32515 7.25377 8.27665 7.5 8.27665C7.74623 8.27665 7.99005 8.32515 8.21754 8.41938C8.44502 8.51361 8.65172 8.65172 8.82583 8.82583L13.125 13.125M11.875 11.875L13.0492 10.7008C13.2233 10.5267 13.43 10.3886 13.6575 10.2944C13.885 10.2001 14.1288 10.1516 14.375 10.1516C14.6212 10.1516 14.865 10.2001 15.0925 10.2944C15.32 10.3886 15.5267 10.5267 15.7008 10.7008L18.125 13.125M3.125 16.25H16.875C17.2065 16.25 17.5245 16.1183 17.7589 15.8839C17.9933 15.6495 18.125 15.3315 18.125 15V5C18.125 4.66848 17.9933 4.35054 17.7589 4.11612C17.5245 3.8817 17.2065 3.75 16.875 3.75H3.125C2.79348 3.75 2.47554 3.8817 2.24112 4.11612C2.0067 4.35054 1.875 4.66848 1.875 5V15C1.875 15.3315 2.0067 15.6495 2.24112 15.8839C2.47554 16.1183 2.79348 16.25 3.125 16.25ZM11.875 6.875H11.8817V6.88167H11.875V6.875ZM12.1875 6.875C12.1875 6.95788 12.1546 7.03737 12.096 7.09597C12.0374 7.15458 11.9579 7.1875 11.875 7.1875C11.7921 7.1875 11.7126 7.15458 11.654 7.09597C11.5954 7.03737 11.5625 6.95788 11.5625 6.875C11.5625 6.79212 11.5954 6.71263 11.654 6.65403C11.7126 6.59542 11.7921 6.5625 11.875 6.5625C11.9579 6.5625 12.0374 6.59542 12.096 6.65403C12.1546 6.71263 12.1875 6.79212 12.1875 6.875Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								{% if node.field_city_image|length %}
+									<div class="text-16 text_white fw-6 lh-20">{{ node.field_city_image|length }}
+										Photos</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="wrap-image-right">
+							{% if total_images >= 2 %}
+								{% set second_image = node.field_city_image.1 %}
+								<div class="image img-2">
+									<a data-fancybox="gallery" class="image-wrap relative d-block" href="{{ file_url(second_image.entity.fileuri) }}">
+										<img src="{{ file_url(second_image.entity.fileuri) }}" alt="{{ second_image.alt ?: 'Gallery image 2' }}" title="{{ second_image.title ?: 'Image 2' }}" loading="lazy" width="804" height="375" decoding="async" class="lazyload">
+									</a>
+								</div>
+							{% endif %}
+							<div class="bot">
+								{% if total_images >= 3 %}
+									{% for item in node.field_city_image|slice(2) %}
+										<div class="image img-3">
+											<a data-fancybox="gallery" class="image-wrap relative d-block" href="{{ file_url(item.entity.fileuri) }}">
+												<img src="{{ file_url(item.entity.fileuri) }}" alt="{{ item.alt ?: 'Gallery image ' ~ (loop.index + 2) }}" title="{{ item.title ?: 'Image ' ~ (loop.index + 2) }}" loading="lazy" width="1095" height="771" decoding="async" class="lazyload">
+											</a>
+										</div>
+									{% endfor %}
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{# <section id="gallery-swiper-started" class="section-property-image">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-12">
+				{% if node.field_city_image|length %}
+					{% set total_images = node.field_city_image|length %}
+					<div class="wrap-image">
+
+						{% if total_images >= 1 %}
+							{% set first_image = node.field_city_image.0 %}
+							<div class="image img-1">
+								<a data-fancybox="gallery" class="image-wrap relative d-block">
+									<img data-src="{{ file_url(first_image.entity.fileuri) }}" alt="{{ first_image.alt ?: 'Gallery image 1' }}" title="{{ first_image.title ?: 'Image 1' }}" loading="lazy" width="1095" height="771" decoding="async" class="lazyload">
+								</a>
+							{% endif %}
+							<div class="tag-property">
+								<div class="icon">
+									<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M1.875 13.125L6.17417 8.82583C6.34828 8.65172 6.55498 8.51361 6.78246 8.41938C7.00995 8.32515 7.25377 8.27665 7.5 8.27665C7.74623 8.27665 7.99005 8.32515 8.21754 8.41938C8.44502 8.51361 8.65172 8.65172 8.82583 8.82583L13.125 13.125M11.875 11.875L13.0492 10.7008C13.2233 10.5267 13.43 10.3886 13.6575 10.2944C13.885 10.2001 14.1288 10.1516 14.375 10.1516C14.6212 10.1516 14.865 10.2001 15.0925 10.2944C15.32 10.3886 15.5267 10.5267 15.7008 10.7008L18.125 13.125M3.125 16.25H16.875C17.2065 16.25 17.5245 16.1183 17.7589 15.8839C17.9933 15.6495 18.125 15.3315 18.125 15V5C18.125 4.66848 17.9933 4.35054 17.7589 4.11612C17.5245 3.8817 17.2065 3.75 16.875 3.75H3.125C2.79348 3.75 2.47554 3.8817 2.24112 4.11612C2.0067 4.35054 1.875 4.66848 1.875 5V15C1.875 15.3315 2.0067 15.6495 2.24112 15.8839C2.47554 16.1183 2.79348 16.25 3.125 16.25ZM11.875 6.875H11.8817V6.88167H11.875V6.875ZM12.1875 6.875C12.1875 6.95788 12.1546 7.03737 12.096 7.09597C12.0374 7.15458 11.9579 7.1875 11.875 7.1875C11.7921 7.1875 11.7126 7.15458 11.654 7.09597C11.5954 7.03737 11.5625 6.95788 11.5625 6.875C11.5625 6.79212 11.5954 6.71263 11.654 6.65403C11.7126 6.59542 11.7921 6.5625 11.875 6.5625C11.9579 6.5625 12.0374 6.59542 12.096 6.65403C12.1546 6.71263 12.1875 6.79212 12.1875 6.875Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								{% if node.field_city_image|length %}
+									<div class="text-16 text_white fw-6 lh-20">{{ node.field_city_image|length }}
+										Photos</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="wrap-image-right">
+							{% if total_images >= 2 %}
+								{% set second_image = node.field_city_image.1 %}
+								<div class="image img-2">
+									<a data-fancybox="gallery" class="image-wrap relative d-block" href="{{ file_url(second_image.entity.fileuri) }}">
+										<img src="{{ file_url(second_image.entity.fileuri) }}" alt="{{ second_image.alt ?: 'Gallery image 2' }}" title="{{ second_image.title ?: 'Image 2' }}" loading="lazy" width="804" height="375" decoding="async" class="lazyload">
+									</a>
+								</div>
+							{% endif %}
+							<div class="bot">
+								{% if total_images >= 3 %}
+									{% for item in node.field_city_image|slice(2) %}
+										<div class="image img-3">
+											<a data-fancybox="gallery" class="image-wrap relative d-block" href="{{ file_url(item.entity.fileuri) }}">
+												<img src="{{ file_url(item.entity.fileuri) }}" alt="{{ item.alt ?: 'Gallery image ' ~ (loop.index + 2) }}" title="{{ item.title ?: 'Image ' ~ (loop.index + 2) }}" loading="lazy" width="1095" height="771" decoding="async" class="lazyload">
+											</a>
+										</div>
+									{% endfor %}
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section> #}
+
+
+<section class="section-property-detail">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-xl-8 col-lg-7">
+				<div class="wg-property box-overview">
+					<div class="heading flex justify-between">
+						<div class="title text-5 fw-6 text-color-heading">
+							{{ node.title.value|striptags|trim }}
+						</div>
+						<div class="price text-5 fw-6 text-color-heading">{{node.field_money.value|render|striptags|trim}}
+						</div>
+					</div>
+					<div class="info flex justify-between">
+						<div class="feature">
+							<p class="location text-1 flex items-center gap-10">{{ node.body.value|striptags|trim }}</p>
+							<ul class="meta-list flex">
+								<li class="text-1 flex">
+									<span>{{ node.field_beds.value|render|striptags|trim }}</span>Bed</li>
+								<li class="text-1 flex">
+									<span>{{ node.field_baths.value|trim }}</span>Bath</li>
+								<li class="text-1 flex">
+									<span>{{ node.field_sqft.value|render|striptags|trim }}</span>Sqft</li>
+							</ul>
+						</div>
+						<div class="action">
+							<ul class="list-action">
+								<li>
+									<a href="#">
+										<svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M15.75 6.1875C15.75 4.32375 14.1758 2.8125 12.234 2.8125C10.7828 2.8125 9.53625 3.657 9 4.86225C8.46375 3.657 7.21725 2.8125 5.76525 2.8125C3.825 2.8125 2.25 4.32375 2.25 6.1875C2.25 11.6025 9 15.1875 9 15.1875C9 15.1875 15.75 11.6025 15.75 6.1875Z" stroke="#5C5E61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M5.625 15.75L2.25 12.375M2.25 12.375L5.625 9M2.25 12.375H12.375M12.375 2.25L15.75 5.625M15.75 5.625L12.375 9M15.75 5.625H5.625" stroke="#5C5E61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M5.04 10.3718C4.86 10.3943 4.68 10.4183 4.5 10.4438M5.04 10.3718C7.66969 10.0418 10.3303 10.0418 12.96 10.3718M5.04 10.3718L4.755 13.5M12.96 10.3718C13.14 10.3943 13.32 10.4183 13.5 10.4438M12.96 10.3718L13.245 13.5L13.4167 15.3923C13.4274 15.509 13.4136 15.6267 13.3762 15.7378C13.3388 15.8489 13.2787 15.951 13.1996 16.0376C13.1206 16.1242 13.0244 16.1933 12.9172 16.2407C12.8099 16.288 12.694 16.3125 12.5767 16.3125H5.42325C4.92675 16.3125 4.53825 15.8865 4.58325 15.3923L4.755 13.5M4.755 13.5H3.9375C3.48995 13.5 3.06072 13.3222 2.74426 13.0057C2.42779 12.6893 2.25 12.2601 2.25 11.8125V7.092C2.25 6.28125 2.826 5.58075 3.62775 5.46075C4.10471 5.3894 4.58306 5.32764 5.0625 5.2755M13.2435 13.5H14.0618C14.2834 13.5001 14.5029 13.4565 14.7078 13.3718C14.9126 13.287 15.0987 13.1627 15.2555 13.006C15.4123 12.8493 15.5366 12.6632 15.6215 12.4585C15.7063 12.2537 15.75 12.0342 15.75 11.8125V7.092C15.75 6.28125 15.174 5.58075 14.3723 5.46075C13.8953 5.38941 13.4169 5.32764 12.9375 5.2755M12.9375 5.2755C10.3202 4.99073 7.67978 4.99073 5.0625 5.2755M12.9375 5.2755V2.53125C12.9375 2.0655 12.5595 1.6875 12.0938 1.6875H5.90625C5.4405 1.6875 5.0625 2.0655 5.0625 2.53125V5.2755M13.5 7.875H13.506V7.881H13.5V7.875ZM11.25 7.875H11.256V7.881H11.25V7.875Z" stroke="#5C5E61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<svg width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M5.41251 8.18028C5.23091 7.85351 4.94594 7.5963 4.60234 7.44902C4.25874 7.30173 3.87596 7.27271 3.51408 7.36651C3.1522 7.46032 2.83171 7.67163 2.60293 7.96728C2.37414 8.26293 2.25 8.62619 2.25 9.00003C2.25 9.37387 2.37414 9.73712 2.60293 10.0328C2.83171 10.3284 3.1522 10.5397 3.51408 10.6335C3.87596 10.7273 4.25874 10.6983 4.60234 10.551C4.94594 10.4038 5.23091 10.1465 5.41251 9.81978M5.41251 8.18028C5.54751 8.42328 5.62476 8.70228 5.62476 9.00003C5.62476 9.29778 5.54751 9.57753 5.41251 9.81978M5.41251 8.18028L12.587 4.19478M5.41251 9.81978L12.587 13.8053M12.587 4.19478C12.6922 4.39288 12.8358 4.56803 13.0095 4.70998C13.1832 4.85192 13.3834 4.95782 13.5985 5.02149C13.8135 5.08515 14.0392 5.1053 14.2621 5.08075C14.4851 5.0562 14.7009 4.98745 14.897 4.87853C15.093 4.7696 15.2654 4.62267 15.404 4.44634C15.5427 4.27001 15.6448 4.06781 15.7043 3.85157C15.7639 3.63532 15.7798 3.40937 15.751 3.18693C15.7222 2.96448 15.6494 2.75 15.5368 2.55603C15.3148 2.17378 14.9518 1.89388 14.5256 1.77649C14.0995 1.6591 13.6443 1.71359 13.2579 1.92824C12.8715 2.1429 12.5848 2.50059 12.4593 2.92442C12.3339 3.34826 12.3797 3.80439 12.587 4.19478ZM12.587 13.8053C12.4794 13.9991 12.4109 14.2121 12.3856 14.4324C12.3603 14.6526 12.3787 14.8757 12.4396 15.0888C12.5005 15.3019 12.6028 15.501 12.7406 15.6746C12.8784 15.8482 13.0491 15.993 13.2429 16.1007C13.4367 16.2083 13.6498 16.2767 13.87 16.302C14.0902 16.3273 14.3133 16.309 14.5264 16.2481C14.7396 16.1872 14.9386 16.0849 15.1122 15.9471C15.2858 15.8092 15.4306 15.6386 15.5383 15.4448C15.7557 15.0534 15.8087 14.5917 15.6857 14.1613C15.5627 13.7308 15.2737 13.3668 14.8824 13.1494C14.491 12.932 14.0293 12.879 13.5989 13.002C13.1684 13.125 12.8044 13.4139 12.587 13.8053Z" stroke="#5C5E61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="info-detail">
+						<div class="wrap-box">
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-Garage-1"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Garages</div>
+									<div class="text-1 text-color-heading">{{ node.field_list.value|render|striptags|trim }}</div>
+								</div>
+							</div>
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-Bathtub"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Bathrooms:</div>
+									<div class="text-1 text-color-heading">{{ node.field_baths.value|trim }}Rooms</div>
+								</div>
+							</div>
+						</div>
+						<div class="wrap-box">
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-SlidersHorizontal"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Type:</div>
+									<div class="text-1 text-color-heading">{{ node.field_properties.entity.label }}</div>
+								</div>
+							</div>
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-Crop"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Land Size:</div>
+									<div class="text-1 text-color-heading">{{ node.field_sqft.value|render|striptags|trim }}SqFt</div>
+								</div>
+							</div>
+						</div>
+						<div class="wrap-box">
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-Bed-2"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Bedrooms:</div>
+									<div class="text-1 text-color-heading">{{ node.field_beds.value|render|striptags|trim }}
+										Rooms</div>
+								</div>
+							</div>
+							<div class="box-icon">
+								<div class="icons">
+									<i class="icon-Ruler"></i>
+								</div>
+								<div class="content">
+									<div class="text-4 text-color-default">Size:</div>
+									<div class="text-1 text-color-heading">{{ node.field_sqft.value|render|striptags|trim }}
+										SqFt</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# <a href="#" class="tf-btn bg-color-primary pd-21 fw-6">Ask a question</a> #}
+				</div>
+				<div
+					class="wg-property video">
+					{# <div class="wg-title text-11 fw-6 text-color-heading">Video</div> #}
+					<div class="widget-video style-1">
+
+
+						{% if node.field_videos is not empty %}
+							<div class="videos-wrapper">
+								<h3>Videos</h3>
+
+								{% for item in node.field_videos %}
+									{% set video = item.entity %}
+
+									{# Check if entity exists #}
+									{% if video %}
+										<div
+											class="video-item">
+											{# Get file URL #}
+											{% set video_url = file_url(video.uri.value) %}
+
+											{# HTML5 Video Player #}
+											<video width="640" height="360" controls>
+												<source src="{{ video_url }}" type="{{ video.filemime.value }}">
+												Your browser does not support the video tag.
+											</video>
+
+										</div>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endif %}
+						{# <img data-src="/images/section/property-detail.jpg" alt="" loading="lazy" width="792" height="446" decoding="async" data-nimg="1" class="lazyload" style="color:transparent" srcset="/_next/image?url=%2Fimages%2Fsection%2Fproperty-detail.jpg&amp;w=828&amp;q=75 1x, /_next/image?url=%2Fimages%2Fsection%2Fproperty-detail.jpg&amp;w=1920&amp;q=75 2x" src="/_next/image?url=%2Fimages%2Fsection%2Fproperty-detail.jpg&amp;w=1920&amp;q=75"><a class="popup-youtube">
+							<i class="icon-play"></i>
+						</a> #}
+					</div>
+				</div>
+				{# <div style="position: fixed; inset: 0px; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 1000;"><div style="position: relative; width: 90%; max-width: 1100px; background-color: rgb(255, 255, 255); border-radius: 4px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;"><button style="position: absolute; top: 10px; right: 10px; font-size: 30px; background: transparent; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; color: rgb(255, 255, 255); cursor: pointer; z-index: 1001;">×</button><div style="position: relative; padding-bottom: 56.25%; height: 0px; overflow: hidden;"><iframe src="https://www.youtube.com/embed/XHOmBV4js_E?autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div></div></div> #}
+				<div class="wg-property box-property-detail">
+					{{ node.field_property_details.value|raw }}
+					<div class="box">
+						<ul>
+
+							<li class="flex">
+								<p class="fw-6">Price</p>
+								<p>{{ node.field_money.value|render|striptags|trim }}</p>
+							</li>
+							<li class="flex">
+								<p class="fw-6">Size</p>
+								<p>{{ node.field_sqft.value|render|striptags|trim }}sqft</p>
+							</li>
+							<li class="flex">
+								<p class="fw-6">Rooms</p>
+								<p>{{ node.field_rooms.value|render|striptags|trim }}</p>
+							</li>
+							<li class="flex">
+								<p class="fw-6">Baths</p>
+								<p>{{ node.field_baths.value|render|striptags|trim }}</p>
+							</li>
+						</ul>
+						<ul>
+							<li class="flex">
+								<p class="fw-6">Beds</p>
+								<p>{{ node.field_beds.value|render|striptags|trim }}</p>
+							</li>
+
+							<li class="flex">
+								<p class="fw-6">Type</p>
+								<p>{{ node.field_properties.entity.label }}</p>
+							</li>
+							<li class="flex">
+								<p class="fw-6">Status</p>
+								<p>{{ node.field_trade.entity.label }}</p>
+							</li>
+							<li class="flex">
+								<p class="fw-6">Garage</p>
+								<p>{{ node.field_list.value|render|striptags|trim }}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{{ node.field_description.value|raw }}
+			</div>
+			<div class="col-xl-4 col-lg-5">
+				<div class="tf-sidebar sticky-sidebar">
+					{% if contact_form is defined and contact_form %}
+						{{ contact_form }}
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

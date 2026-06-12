@@ -1,0 +1,17 @@
+{% set raw_images = fields.field_city_image.content|render|striptags|trim %}
+
+<div class="swiper-container rtl-slider">
+  <div class="swiper-wrapper">
+    {% if raw_images %}
+      {% set image_list = raw_images|split(', ') %}
+      
+      {% for image_path in image_list %}
+        {% set clean_path = image_path|trim %}
+        <div class="swiper-slide partner-item style-2" data-swiper-slide-index="{{ loop.index0 }}">
+          <img src="{{ clean_path }}" alt="City image {{ loop.index }}">
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+

@@ -1,0 +1,10 @@
+name: Block Group
+type: module
+description: Add block groups to block configuration page.
+package: Other
+core_version_requirement: ^9.1 || ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2026-02-11
+version: '2.0.3'
+project: 'blockgroup'
+datestamp: 1770846453

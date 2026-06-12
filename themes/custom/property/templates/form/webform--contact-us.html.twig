@@ -1,0 +1,56 @@
+<div class="wrap-map"></div>
+<div class="box">
+	<div class="tf-container">
+		<div class="row">
+			<div
+				class="col-12">
+
+				{# Get form attributes #}
+				{% set form_action = element['#action'] %}
+				{% set form_method = element['#method']|default('post') %}
+				{% set form_html_id = element['#id'] %}
+
+				<form{{attributes}}>
+					<div class="heading-section">
+						<h2 class="title">We Would Love to Hear From You</h2>
+						<p class="text-1">We'll get to know you to understand your selling goals, explain the selling process so you know what to expect.</p>
+					</div>
+
+					{# CRITICAL: These hidden fields are REQUIRED for form submission #}
+					{{ element.form_build_id }}
+					{{ element.form_token }}
+					{# <-- YOU WERE MISSING THIS! #}
+					{{ element.form_id }}
+
+					<div class="cols">
+						<fieldset>
+							{{ element.elements.name }}
+						</fieldset>
+						<fieldset>
+							{{ element.elements.email }}
+						</fieldset>
+					</div>
+
+					<div class="cols">
+						<fieldset>
+							{{ element.elements.phone_number }}
+						</fieldset>
+						{# <div class="select"> #}
+						<fieldset>
+							{{ element.elements.what_are_you_interested_in }}
+						</fieldset>
+						{# </div> #}
+					</div>
+
+					<fieldset>
+						{{ element.elements.your_message }}
+					</fieldset>
+
+					{# Submit button #}
+					{{ element.actions }}
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

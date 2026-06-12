@@ -1,0 +1,81 @@
+{#
+/**
+* @file
+* Default theme implementation to display a view of unformatted rows.
+*
+* Available variables:
+* - title: The title of this group of rows. May be empty.
+* - rows: A list of the view's row items.
+* - attributes: The row's HTML attributes.
+* - content: The row's content.
+* - view: The view object.
+* - default_row_class: A flag indicating whether default classes should be
+* used on rows.
+*
+* @see template_preprocess_views_view_unformatted()
+*
+* @ingroup themeable
+*/
+#}
+
+
+
+
+
+
+
+
+{% if property_terms %}
+<div class="wrap-categories-sw">
+    <div class="swiper swiper-initialized swiper-horizontal sw-layout style-pagination" dir="ltr">
+        <div class="swiper-wrapper">
+
+             {% for term in property_terms %}
+            <div class="swiper-slide swiper-slide" style="width: 188.333px; margin-right: 30px;"><a href="#" id ="{{ term.id }}"
+                    class="categories-item ">
+                    <div class="icon-box">
+                    {% if term.image %}
+                <img src="{{ term.image }}" alt="{{ term.name }}"
+                    style="max-width: 100%; height: auto; border-radius: 5px;">
+            
+            {% endif %}
+                    </div>
+                    <div class="content text-center">
+                        <h5>{{ term.name }}</h5>
+                        <p class="mt-4 text-1">  {% if term.description %}
+                
+                    {{ term.description }}
+                
+                {% endif %}Property</p>
+                    </div>
+                </a></div>
+ {% endfor %}
+
+        </div>
+        <div
+            class="sw-pagination sw-pagination-layout text-center d-lg-none d-block mt-20 spd2 swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
+            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+    </div>
+</div>
+
+{% endif %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+<div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767" data-screen="767" data-preview="1" data-space="15">
+					<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
+{% for row in rows %}
+
+{%
+set row_classes = [
+default_row_class ? 'views-row',
+]
+%}
+ 
+    {{- row.content -}}
+    	
+    {% endfor %}
+    </div>
+					<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
+				</div>

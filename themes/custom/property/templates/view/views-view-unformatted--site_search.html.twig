@@ -1,0 +1,160 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+<section class="section-listing tf-spacing-1">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-12">
+				<div class="heading-section text-center ">
+					<h2 class="title split-text effect-right">
+						<span class="wow charsAnimIn words chars splitting animated" aria-hidden="true" style="--word-total: 3; --char-total: 23; visibility: visible;">
+							<span class="word" data-word="Grow" style="--word-index: 0;">
+								<span class="char" data-char="G" style="--char-index: 0;">T</span>
+								<span class="char" data-char="G" style="--char-index: 1;">o</span>
+								<span class="char" data-char="G" style="--char-index: 2;">d</span>
+								<span class="char" data-char="G" style="--char-index: 3;">a</span>
+								<span class="char" data-char="G" style="--char-index: 4;">y</span>
+								<span class="char" data-char="G" style="--char-index: 5;">’</span>
+								<span class="char" data-char="G" style="--char-index: 6;">s</span>
+							</span>
+							<span class="whitespace"></span>
+							<span class="word" data-word="Grow" style="--word-index: 1;">
+								<span class="char" data-char="G" style="--char-index: 1;">L</span>
+								<span class="char" data-char="G" style="--char-index: 2;">u</span>
+								<span class="char" data-char="G" style="--char-index: 3;">x</span>
+								<span class="char" data-char="G" style="--char-index: 4;">u</span>
+								<span class="char" data-char="G" style="--char-index: 5;">r</span>
+								<span class="char" data-char="G" style="--char-index: 6;">y</span>
+							</span>
+							<span class="whitespace"></span>
+							<span class="word" data-word="Grow" style="--word-index: 2;">
+								<span class="char" data-char="G" style="--char-index: 2;">L</span>
+								<span class="char" data-char="G" style="--char-index: 3;">i</span>
+								<span class="char" data-char="G" style="--char-index: 4;">s</span>
+								<span class="char" data-char="G" style="--char-index: 5;">t</span>
+								<span class="char" data-char="G" style="--char-index: 6;">i</span>
+								<span class="char" data-char="G" style="--char-index: 7;">n</span>
+								<span class="char" data-char="G" style="--char-index: 8;">g</span>
+								<span class="char" data-char="G" style="--char-index: 9;">s</span>
+							</span>
+							<span class="whitespace"></span>
+						</span>
+					</h2>
+					<p class="text-1 split-text split-lines-transform">Thousands of luxury home enthusiasts just like you visit our website.</p>
+				</div>
+				<div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767" data-screen="767" data-preview="1" data-space="15">
+					<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
+						{% for row in rows %}
+							{# Get the node entity #}
+							{% set node = row.content['#node'] %}
+
+							{# Access field values #}
+							{% set title = node.label() %}
+							{% set title_url = path('entity.node.canonical', {'node': node.id()}) %}
+							{% set body = node.body.value %}
+							{% set money = node.field_money.value %}
+							{% set beds = node.field_beds.value %}
+							{% set baths = node.field_baths.value|trim %}
+							{% set sqft = node.field_sqft.value %}
+
+							{# For formatted fields (like text with summary) #}
+							{# {% set body_view = node.body.view('default') %} #}
+
+							{# For entity reference fields #}
+								{% if node.field_category.entity %}
+							{% set category_name = node.field_category.entity.label() %}
+							{% endif %}
+
+
+							{% set image_uri = node.field_image.entity.uri.value %}
+							{% set image_alt = node.field_image.alt %}
+							{# <img src="{{ file_url(image_uri) }}" alt="{{ image_alt }}" class="article-image"> #}
+
+
+							{# <div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767" data-screen="767" data-preview="1" data-space="15">
+													<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 "> #}
+								<div class="swiper-slide"> <div class="box-house hover-img ">
+									<div
+										class="image-wrap">
+
+
+										{# Or create your own link #}
+										<a href="{{ title_url }}">
+											<img src="{{ file_url(image_uri) }}" alt="{{ image_alt }}" class="article-image"></a>
+										<ul class="box-tag flex gap-8 ">
+											<li class="flat-tag text-4 bg-main fw-6 text_white">Featured</li>
+											<li class="flat-tag text-4 bg-3 fw-6 text_white">For Sale</li>
+										</ul>
+										<div class="list-btn flex gap-8 ">
+											<a href="#" class="btn-icon save hover-tooltip">
+												<i class="icon-save"></i>
+												<span class="tooltip">Add Favorite</span>
+											</a>
+											<a href="#" class="btn-icon find hover-tooltip">
+												<i class="icon-find-plus"></i>
+												<span class="tooltip">Quick View</span>
+											</a>
+										</div>
+									</div>
+									<div class="content">
+										<h5 class="title">
+											<a href="{{ title_url }}">{{ title }}</a>
+										</h5>
+										<p class="location text-1 line-clamp-1 ">
+											<i class="icon-location"></i>
+											{{ body|render|striptags }}</p>
+										<ul class="meta-list flex">
+											<li class="text-1 flex">
+												<span>{{ beds }}</span>Beds</li>
+											<li class="text-1 flex">
+												<span>{{ baths }}</span>Baths</li>
+											<li class="text-1 flex">
+												<span>{{ sqft }}</span>Sqft</li>
+										</ul>
+										<div class="bot flex justify-between items-center">
+											<h5 class="price">{{ money }}</h5>
+											<div class="wrap-btn flex">
+												<a href="#" class="compare flex gap-8 items-center text-1">
+													<i class="icon-compare"></i>Compare</a>
+												<a class="tf-btn style-border pd-4" href="{{ title_url }}">Details</a>
+											</div>
+										</div>
+									</div>
+								</div>
+                </div>
+
+								{# Keep original row_classes if needed #}
+								{%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+
+								{# {{- row.content -}} #}
+							{% endfor %}
+						</div>
+						<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>

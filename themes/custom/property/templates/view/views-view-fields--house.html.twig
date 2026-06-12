@@ -1,0 +1,94 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set raw_images = fields.field_image.content|render|striptags|trim %}
+{# Create custom image tag #}
+{# Get the raw URL from title field #}
+{% set raw_title = fields.title.content %}
+{% set title_url = raw_title|split('href="')|last|split('"')|first %}
+<div class="swiper-slide">
+	<div class="box-house hover-img style-list">
+		<div class="image-wrap">
+			<a href="{{ title_url }}"><img src="{{ raw_images }}"></a>
+			<ul class="box-tag flex gap-8">
+				<li class="flat-tag text-4 bg-main fw-6 text_white">{{ fields.field_trade.content }}</li>
+			</ul>
+			{# <div class="list-btn flex gap-8">
+				<a href="#" class="btn-icon save hover-tooltip">
+					<i class="icon-save"></i>
+					<span class="tooltip">Add Favorite</span>
+				</a>
+				<a href="#" class="btn-icon find hover-tooltip">
+					<i class="icon-find-plus"></i>
+					<span class="tooltip">Quick View</span>
+				</a>
+			</div> #}
+		</div>
+		<div class="content">
+			<h5 class="title">
+				<a href="{{ title_url }}">{{ raw_title }}</a>
+			</h5>
+			{{ fields.body.content }}
+			<ul class="meta-list flex">
+				<li class="meta-item">
+					<div class="text-9 flex">
+						<i class="icon-bed"></i>Beds<span>{{ fields.field_beds.content }}</span>
+					</div>
+					<div class="text-9 flex">
+						<i class="icon-sqft"></i>Sqft<span>{{ fields.field_sqft.content }}</span>
+					</div>
+				</li>
+              
+				<li class="meta-item">
+					<div class="text-9 flex">
+						<i class="icon-bath"></i>Baths<span>{{ fields.field_baths.content }}</span>
+					</div>
+					<div class="text-9 flex">
+						<i class="icon-garage"></i>Garage<span>{{ fields.field_list.content }}</span>
+					</div>
+				</li>
+			</ul>
+			<div class="bot flex justify-between items-center">
+				<h5 class="price">{{ fields.field_money.content }}</h5>
+				<div class="wrap-btn flex">
+					<a class="tf-btn style-border pd-4" href="{{ title_url }}">Details</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+

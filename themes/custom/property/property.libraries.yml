@@ -1,0 +1,51 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css: {}
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css: {}
+      https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400,500,700&lang : {}
+      https://fonts.googleapis.com/css?family=Google+Sans+Text:400&text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&lang=en : {}
+
+      css/5c565092a78ca08e.css: {}
+      css/9f4d736d37718fcb.css: {}
+      css/custom.css: {}
+      
+  js:
+     js/custom.js: {}
+     https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js: {}
+     js/4bd1b696-ece213275b9b2643.js: {}
+     js/4e6af11a-9acf14fdb8a6245a.js: {}
+     js/9dadc25a-cf3239c265367e72.js: {}
+     js/1517-81aeb9498e1daec5.js: {}
+     js/2550-4ab5299a933883aa.js: {}
+     js/2854-a87ebf3f7186ab7b.js: {}
+     js/3185-4f51ba13756d1317.js: {}
+     js/3517-1edf91b9e0e7b20b.js: {}
+     js/4334-b5eab7676f83f285.js: {}
+     js/4488-2c651e0f965220c2.js: {}
+     js/4562-f9f32ad2271cbdf6.js: {}
+     js/5301-092a231e39880096.js: {}
+     js/5351-229267f374a270ad.js: {}
+     js/5558-a048ff737c48f305.js: {}
+     js/5651-51b8496780cbab59.js: {}
+     js/5967-d16c5caeb6f339b4.js: {}
+    # js/7970-3261e654a1b32931.js: {}
+    # js/8173-9983cc04eac978ba.js: {}
+    # js/8328-123a6ecd15195547.js: {}
+    # js/9345-44034a32a40a7ed9.js: {}
+    # js/9461-b3e7437610fffb80.js: {}
+    # js/9587-085cae39ccc77474.js: {}
+    # js/9732-41c12ebb9a14b551.js: {}
+    # js/9941-964d296020933cff.js: {}
+    # js/c15bf2b0-692dfc0413eeddfe.js: {}
+    # js/ca377847-e232a04e423a02b7.js: {}
+    # js/main-app-9a3720905815865a.js: {}
+    # js/polyfills-42372ed130431b0a.js: {}
+    # js/webpack-da6909fbfb96be4b.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax  # ADD THIS for Infinite Scroll
+    - core/drupalSettings  # ADD THIS for AJAX
+    - views/views.ajax  # ADD THIS for Views AJAX

@@ -1,0 +1,53 @@
+{# Get all image attributes #}
+{% set raw_images = fields.field_image.content|render|striptags|trim %}
+{# Create custom image tag #}
+{# Get the raw URL from title field #}
+{% set raw_title = fields.title.content %}
+{% set title_url = raw_title|split('href="')|last|split('"')|first %}
+<div class="box-testimonials">
+	 <div class="wg-testimonial style-2">
+		<div class="ratings">
+			{% set star_count = fields.field_list.raw %}
+
+			{# Fallback if raw doesn't work #}
+			{% if star_count is empty %}
+				{% set star_count = fields.field_list.content|striptags %}
+			{% endif %}
+
+			{# Convert to number #}
+			{% set star_count = star_count|number_format(0) %}
+
+			{# Limit to maximum 5 stars #}
+			{% if star_count > 5 %}
+				{% set star_count = 5 %}
+			{% endif %}
+
+			{# Show filled stars #}
+			{% for i in 1..star_count %}
+				<i class="icon-star filled"></i>
+			{% endfor %}
+
+			{# Show empty stars for remaining (up to 5 total) #}
+			{% set remaining = 5 - star_count %}
+			{% if remaining > 0 %}
+				{% for i in 1..remaining %}
+					<i class="icon-star empty"></i>
+				{% endfor %}
+			{% endif %}
+		</div>
+
+		{{ fields.body.content }}
+
+		<div class="author">
+			<div class="avatar"><img src="{{ raw_images }}"></div>
+			<div class="content">
+				<h6 class="name">
+					<a href="{{ title_url }}">
+						{{ raw_title }}</a>
+				</h6>
+				<p class="text-2">{{ fields.field_money.content }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+

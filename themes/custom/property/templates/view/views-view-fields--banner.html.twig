@@ -1,0 +1,27 @@
+
+
+{# {{ dump(fields.field_image)}} #}
+{# {% set raw_image = fields.field_image.content|render|striptags|trim %}
+<div class="page-title home01" style="background-image: url('{{ raw_image }}');
+    background-attachment: fixed;
+    padding: 154px 0 258px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;">
+    <div class="tf-container ">
+        <div class="row justify-center relative">
+            <div class="col-lg-8 ">
+                <div class="content-inner"> #}
+                    <div class="heading-title">
+                        <h1 class="title">{{ fields.title.content }}</h1>
+                        {{ fields.body.content }}
+                    </div>
+             
+{# 					
+				</div>
+			</div>
+		</div>
+	</div>
+</div> #}

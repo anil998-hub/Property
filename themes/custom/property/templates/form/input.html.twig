@@ -1,0 +1,113 @@
+
+{#
+/**
+ * @file
+ * Default theme implementation for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# {{ dump(element['#id']) }} #}
+
+{% set id = element['#id'] %}
+
+{# For Email Field #}
+{% if id == 'edit-mail-0-value' %}
+  {% set classes = ['input', 'input-nl', 'form-control'] %}
+  {% set placeholder_text = 'Enter your email address' %}
+  {% set input_type = 'email' %}
+  
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('mail') }}"
+         value="{{ element['#default_value']|default('') }}"
+         {% if element['#required'] %}required{% endif %} />
+         
+{# For Name Field #}  
+{# {% elseif id == 'edit-name' %}
+  {% set classes = ['input', 'input-name', 'form-control'] %}
+  {% set placeholder_text = 'Enter your full name' %}
+  {% set input_type = 'text' %}
+  
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('name') }}"
+         value="{{ element['#default_value']|default('') }}"
+         {% if element['#required'] %}required{% endif %} /> #}
+         
+{% elseif id == 'edit-submit--2' %} 
+
+{% set classes = ['sib-form-block__button', 'sib-form-block__button-with-loader',' tf-btn', 'bg-color-primary' , 'w-full'] %}
+  {# {% set placeholder_text = 'Enter your full name' %} #}
+    {% set input_type = 'submit' %}
+  {% set button_value = 'Subscribe' %}
+  <div class="sib-form-block">
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('name') }}"
+         value="{{ button_value }}"
+         {% if element['#required'] %}required{% endif %} /></div>
+
+   {% elseif id == 'edit-submit' %}
+
+{% set classes = ['tf-btn', 'bg-color-primary', 'fw-7', 'pd-8'] %}
+{% set button_value = 'Contact our experts' %}
+
+<div class="send-wrap">
+  <button type="submit" 
+          class="{{ classes|join(' ') }}" 
+          id="{{ id }}" 
+          name="{{ element['#name']|default('name') }}"
+          {% if element['#required'] %}required{% endif %}>
+    {{ button_value }}
+  </button>
+</div>
+
+{% elseif id == 'edit-submit-site-search' %} 
+
+{% set classes = ['tf-btn', 'bg-color-primary' , 'pd-3' ,'button' ,'js-form-submit', 'form-submit'] %}
+  {# {% set placeholder_text = 'Enter your full name' %} #}
+    {% set input_type = 'submit' %}
+  {% set button_value = 'Search' %}
+  <div class="box-item wrap-btn">
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('name') }}"
+         value="{{ button_value }}"
+         {% if element['#required'] %}required{% endif %} />
+         </div>
+{% elseif id == 'edit-keys' %} 
+
+{# {% set classes = ['sib-form-block__button', 'sib-form-block__button-with-loader',' tf-btn', 'bg-color-primary' , 'w-full'] %} #}
+  {% set placeholder_text = 'Search  Property...' %}
+    {% set input_type = 'text' %}
+  {# {% set button_value = 'Subscribe' %} #}
+  <fieldset>
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('name') }}"
+         value="{{ button_value }}"
+         {% if element['#required'] %}required{% endif %} /></fieldset>
+
+{% else %}
+  <input{{ attributes }} />{{ children }}
+{% endif %}
+{# 
+{{ children }} #}
