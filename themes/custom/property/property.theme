@@ -3,6 +3,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_views_view_unformatted().
@@ -65,6 +66,28 @@ function property_preprocess_views_view_unformatted(&$variables) {
         }
     }
 
+
+
+$property_counts = [];
+
+$terms = \Drupal::entityTypeManager()
+  ->getStorage('taxonomy_term')
+  ->loadTree('property');
+
+foreach ($terms as $term) {
+
+  $count = \Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
+    ->condition('type', 'luxury_listings')
+    ->condition('status', 1)
+    ->condition('field_properties.target_id', $term->tid)
+    ->count()
+    ->execute();
+
+  $property_counts[$term->tid] = $count;
+}
+
+$variables['property_counts'] = $property_counts;
        if ($view->id() == 'trading') {
     
         // Load taxonomy terms from 'property' vocabulary
@@ -215,3 +238,6 @@ function property_theme_suggestions_form_alter(array &$suggestions, array $varia
   }
   
 }
+
+
+

@@ -21,10 +21,6 @@
 
 
 
-
-
-
-
 {% if property_terms %}
 <div class="wrap-categories-sw">
     <div class="swiper swiper-initialized swiper-horizontal sw-layout style-pagination" dir="ltr">
@@ -42,11 +38,7 @@
                     </div>
                     <div class="content text-center">
                         <h5>{{ term.name }}</h5>
-                        <p class="mt-4 text-1">  {% if term.description %}
-                
-                    {{ term.description }}
-                
-                {% endif %}Property</p>
+                        <p class="mt-4 text-1">   {{ property_counts[term.id]|default(0) }} Properties</p>
                     </div>
                 </a></div>
  {% endfor %}
