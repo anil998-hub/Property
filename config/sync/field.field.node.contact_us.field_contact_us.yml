@@ -1,0 +1,31 @@
+uuid: b728344f-33bb-42b7-a5a0-22f9351eed3e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_us
+    - node.type.contact_us
+    - paragraphs.paragraphs_type.contact_us
+  module:
+    - entity_reference_revisions
+id: node.contact_us.field_contact_us
+field_name: field_contact_us
+entity_type: node
+bundle: contact_us
+label: 'Contact Us'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      contact_us: contact_us
+    negate: 0
+    target_bundles_drag_drop:
+      contact_us:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

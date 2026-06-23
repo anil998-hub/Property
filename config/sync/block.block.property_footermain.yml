@@ -1,0 +1,22 @@
+uuid: f5b8af28-ae5f-4aa4-b69b-d65254032143
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - blockgroup.block_group_content.footer_main
+  module:
+    - blockgroup
+  theme:
+    - property
+id: property_footermain
+theme: property
+region: proty
+weight: 0
+provider: null
+plugin: 'block_group:footer_main'
+settings:
+  id: 'block_group:footer_main'
+  label: Footer-Main
+  label_display: '0'
+  provider: blockgroup
+visibility: {  }

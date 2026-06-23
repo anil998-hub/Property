@@ -1,0 +1,21 @@
+uuid: b2c54c64-1bc6-436f-ae70-2b0807aaf050
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.contact_us
+  module:
+    - yoast_seo
+id: node.contact_us.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: contact_us
+label: metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: yoast_seo

@@ -1,0 +1,19 @@
+uuid: bc8dc0b7-0983-41ff-af78-f334970aee2d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.contact_us
+id: paragraph.contact_us.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: contact_us
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

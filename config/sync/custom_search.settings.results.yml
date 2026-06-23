@@ -1,0 +1,35 @@
+node_search:
+  path: node
+  search: true
+  advanced:
+    visibility: true
+    collapsible: true
+    collapsed: true
+    criteria:
+      or: or
+      phrase: phrase
+      negative: negative
+    types:
+      article: article
+      banner: banner
+      contact_us: contact_us
+      luxury_listings: luxury_listings
+      page: page
+      simplenews_issue: simplenews_issue
+      testimonials: testimonials
+      trading: trading
+      webform: webform
+      work_together: work_together
+    languages:
+      en-gb: en-gb
+      und: und
+      zxx: zxx
+  info:
+    type: type
+    user: user
+    date: date
+    comment: comment
+  filter:
+    position: disabled
+    label: 'Filter the results'
+    any: '- Any -'

@@ -1,0 +1,21 @@
+uuid: abf4aad7-50c7-403b-a40c-5ef5004fc158
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatag
+    - node.type.contact_us
+  module:
+    - metatag
+id: node.contact_us.field_metatag
+field_name: field_metatag
+entity_type: node
+bundle: contact_us
+label: Metatag
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

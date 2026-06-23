@@ -1,0 +1,9 @@
+uuid: b8ee5f86-bbca-43dd-a62f-af5066f71d3a
+langcode: en-gb
+status: true
+dependencies: {  }
+name: Property
+vid: property
+description: null
+weight: 0
+new_revision: false

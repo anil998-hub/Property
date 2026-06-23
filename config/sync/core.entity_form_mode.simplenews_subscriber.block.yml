@@ -1,0 +1,13 @@
+uuid: 758ef1e3-032e-45c5-8140-ff34754bfa6b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - simplenews
+_core:
+  default_config_hash: 7EIO8InzdeUlS1NCs5hq23QRzWmqAKGjeSqd3hQP62s
+id: simplenews_subscriber.block
+label: Block
+description: ''
+targetEntityType: simplenews_subscriber
+cache: true

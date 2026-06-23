@@ -49,7 +49,7 @@
 									{% set title_url = raw_title|split('href="')|last|split('"')|first %}
 
 
-									{# Or create your own link #}<a href="{{ title_url }}"> <img src="{{ raw_images }}"></a>
+									{# Or create your own link #}<a href="{{ title_url }}"> {{ fields.field_image.content }}</a>
 									<ul class="box-tag flex gap-8 ">
 										<li class="flat-tag text-4 bg-main fw-6 text_white">Featured</li>
 										<li class="flat-tag text-4 bg-3 fw-6 text_white">For Sale</li>

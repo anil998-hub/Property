@@ -1,0 +1,21 @@
+uuid: 097539da-1d87-4fd8-9a84-0c1d32513dfc
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatag
+    - node.type.trading
+  module:
+    - metatag
+id: node.trading.field_metatag
+field_name: field_metatag
+entity_type: node
+bundle: trading
+label: Metatag
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

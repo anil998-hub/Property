@@ -1,0 +1,29 @@
+uuid: 1db8ff07-5d88-4e8b-b8b6-27642083d58d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_properties
+    - node.type.luxury_listings
+    - taxonomy.vocabulary.property
+id: node.luxury_listings.field_properties
+field_name: field_properties
+entity_type: node
+bundle: luxury_listings
+label: Properties
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      property: property
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

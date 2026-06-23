@@ -1,0 +1,21 @@
+uuid: da7ad2d0-8d5b-4c42-b5cb-e09ff47a972a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatag
+    - node.type.luxury_listings
+  module:
+    - metatag
+id: node.luxury_listings.field_metatag
+field_name: field_metatag
+entity_type: node
+bundle: luxury_listings
+label: Metatag
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

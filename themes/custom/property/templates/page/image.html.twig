@@ -10,10 +10,11 @@
  * @see template_preprocess_image()
  */
 #}
-{%
-set classes = [
-  style_name ? 'image-style-' ~ style_name|clean_class,
-]
-%}
 
-<img{{ attributes.addClass(classes) }}/>
+{# Only add classes if style_name exists and is NOT 'webp_no_class' #}
+{% if style_name and style_name != 'webp_no_class' %}
+  {% set classes = ['image-style-' ~ style_name|clean_class] %}
+  <img{{ attributes.addClass(classes) }}/>
+{% else %}
+  <img{{ attributes }}/>
+{% endif %}

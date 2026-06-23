@@ -1,0 +1,26 @@
+uuid: 3d4ea5db-2e68-4c5a-93ee-d7afe3f90f62
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_property_details
+    - filter.format.full_html
+    - node.type.luxury_listings
+  module:
+    - text
+id: node.luxury_listings.field_property_details
+field_name: field_property_details
+entity_type: node
+bundle: luxury_listings
+label: 'Property Details'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

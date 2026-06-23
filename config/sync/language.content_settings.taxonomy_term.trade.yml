@@ -1,0 +1,11 @@
+uuid: 30147fa6-da20-4e18-b38d-f7467622cb17
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trade
+id: taxonomy_term.trade
+target_entity_type_id: taxonomy_term
+target_bundle: trade
+default_langcode: site_default
+language_alterable: false

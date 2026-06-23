@@ -1,0 +1,11 @@
+uuid: 0d8a399e-196f-41fb-9775-31314e0eb40f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.work_together
+id: node.work_together
+target_entity_type_id: node
+target_bundle: work_together
+default_langcode: site_default
+language_alterable: false

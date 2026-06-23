@@ -1,0 +1,19 @@
+uuid: 65b0733a-7258-4240-97de-c7cee27bd4ce
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_baths
+    - node.type.luxury_listings
+id: node.luxury_listings.field_baths
+field_name: field_baths
+entity_type: node
+bundle: luxury_listings
+label: baths
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

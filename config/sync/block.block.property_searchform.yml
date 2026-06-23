@@ -1,0 +1,21 @@
+uuid: 629e72e1-f59e-4b66-b6b6-eacf1f8b015f
+langcode: en-gb
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - property
+id: property_searchform
+theme: property
+region: header
+weight: -8
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  label_display: visible
+  provider: search
+  page_id: ''
+visibility: {  }

@@ -1,0 +1,11 @@
+uuid: d5058550-2a09-4965-a838-3e9974a6978c
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.trading
+id: node.trading
+target_entity_type_id: node
+target_bundle: trading
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,19 @@
+uuid: ea954ab3-cf38-4456-ac2b-b4d68707427a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_money
+    - node.type.luxury_listings
+id: node.luxury_listings.field_money
+field_name: field_money
+entity_type: node
+bundle: luxury_listings
+label: Money
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

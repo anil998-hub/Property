@@ -1,0 +1,24 @@
+uuid: ee70b2ef-3ae7-4709-b1b6-81c015af021a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.banner
+  module:
+    - text
+id: node.banner.body
+field_name: body
+entity_type: node
+bundle: banner
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

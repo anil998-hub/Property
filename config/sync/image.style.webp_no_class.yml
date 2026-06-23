@@ -1,0 +1,13 @@
+uuid: 9c6c1a20-fae7-422e-828f-60c88eb4cb5c
+langcode: en-gb
+status: true
+dependencies: {  }
+name: webp_no_class
+label: 'Webp no class'
+effects:
+  172e2db0-aef4-432f-a5f9-a2029e650d0f:
+    uuid: 172e2db0-aef4-432f-a5f9-a2029e650d0f
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

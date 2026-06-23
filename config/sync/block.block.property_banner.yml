@@ -1,0 +1,27 @@
+uuid: 559021f7-ea36-4f0c-8c95-80d21bb00d76
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - blockgroup.block_group_content.banner
+  module:
+    - blockgroup
+    - system
+  theme:
+    - property
+id: property_banner
+theme: property
+region: content
+weight: -15
+provider: null
+plugin: 'block_group:banner'
+settings:
+  id: 'block_group:banner'
+  label: Banner
+  label_display: visible
+  provider: blockgroup
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

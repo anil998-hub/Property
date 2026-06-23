@@ -1,0 +1,42 @@
+uuid: c6baab5b-1e1a-43ff-ba97-8aadf2eedd16
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.work_together.body
+    - field.field.node.work_together.field_city_image
+    - node.type.work_together
+  module:
+    - image
+    - text
+    - user
+id: node.work_together.default
+targetEntityType: node
+bundle: work_together
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_city_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

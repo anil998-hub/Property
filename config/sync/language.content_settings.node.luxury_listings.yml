@@ -1,0 +1,11 @@
+uuid: 87a091ae-06d9-4ceb-9682-3c39f5ae89a6
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.luxury_listings
+id: node.luxury_listings
+target_entity_type_id: node
+target_bundle: luxury_listings
+default_langcode: site_default
+language_alterable: false

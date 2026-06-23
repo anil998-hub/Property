@@ -1,0 +1,75 @@
+uuid: 2024a046-3b7f-407d-b80a-efbba352e964
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.luxury_listings.body
+    - field.field.node.luxury_listings.field_baths
+    - field.field.node.luxury_listings.field_beds
+    - field.field.node.luxury_listings.field_city
+    - field.field.node.luxury_listings.field_city_image
+    - field.field.node.luxury_listings.field_deatils
+    - field.field.node.luxury_listings.field_description
+    - field.field.node.luxury_listings.field_image
+    - field.field.node.luxury_listings.field_list
+    - field.field.node.luxury_listings.field_metatag
+    - field.field.node.luxury_listings.field_money
+    - field.field.node.luxury_listings.field_properties
+    - field.field.node.luxury_listings.field_property_details
+    - field.field.node.luxury_listings.field_rooms
+    - field.field.node.luxury_listings.field_sqft
+    - field.field.node.luxury_listings.field_trade
+    - field.field.node.luxury_listings.field_videos
+    - image.style.medium
+    - node.type.luxury_listings
+  module:
+    - image
+    - text
+    - user
+id: node.luxury_listings.teaser
+targetEntityType: node
+bundle: luxury_listings
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_baths: true
+  field_beds: true
+  field_city: true
+  field_city_image: true
+  field_deatils: true
+  field_description: true
+  field_list: true
+  field_metatag: true
+  field_money: true
+  field_properties: true
+  field_property_details: true
+  field_rooms: true
+  field_sqft: true
+  field_trade: true
+  field_videos: true
+  langcode: true

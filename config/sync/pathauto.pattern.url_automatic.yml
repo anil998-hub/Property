@@ -1,0 +1,23 @@
+uuid: 2e6ac38a-7ec6-403e-b055-b222d75298cb
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.luxury_listings
+  module:
+    - node
+id: url_automatic
+label: 'URL automatic'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  88dc6a74-18bb-47f0-87da-2bcd8beed3d2:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      luxury_listings: luxury_listings
+selection_logic: and
+weight: -5
+relationships: {  }

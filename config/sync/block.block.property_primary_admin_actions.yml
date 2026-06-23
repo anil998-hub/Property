@@ -1,0 +1,20 @@
+uuid: a7f0e412-3496-4223-9ec5-9abb54f47308
+langcode: en-gb
+status: false
+dependencies:
+  theme:
+    - property
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: property_primary_admin_actions
+theme: property
+region: header
+weight: -9
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

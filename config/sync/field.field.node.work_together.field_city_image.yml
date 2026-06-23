@@ -1,0 +1,38 @@
+uuid: 46783328-7992-4ae4-9c92-9dd3e0bbeb3c
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_image
+    - node.type.work_together
+  module:
+    - image
+id: node.work_together.field_city_image
+field_name: field_city_image
+entity_type: node
+bundle: work_together
+label: Images
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp mp4'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

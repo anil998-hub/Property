@@ -1,0 +1,47 @@
+uuid: 5dca2ea0-9b0f-487d-9b9f-e8c68238f982
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_us.field_description
+    - field.field.paragraph.contact_us.field_image
+    - field.field.paragraph.contact_us.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.contact_us
+  module:
+    - image
+    - text
+id: paragraph.contact_us.default
+targetEntityType: paragraph
+bundle: contact_us
+mode: default
+content:
+  field_description:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

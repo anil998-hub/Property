@@ -1,0 +1,29 @@
+uuid: cb660f9a-1196-4a4a-be61-ef19fe7604bc
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_properties
+    - node.type.trading
+    - taxonomy.vocabulary.trading
+id: node.trading.field_properties
+field_name: field_properties
+entity_type: node
+bundle: trading
+label: Trading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      trading: trading
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: property
+field_type: entity_reference

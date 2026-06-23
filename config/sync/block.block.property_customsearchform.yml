@@ -1,0 +1,158 @@
+uuid: 70dcc741-2745-41ca-b3cd-939236168d8e
+langcode: en-gb
+status: false
+dependencies:
+  module:
+    - custom_search
+    - system
+  theme:
+    - property
+id: property_customsearchform
+theme: property
+region: content
+weight: -6
+provider: null
+plugin: custom_search
+settings:
+  id: custom_search
+  label: 'Custom Search form'
+  label_display: visible
+  provider: custom_search
+  search_box:
+    label_visibility: false
+    label: 'Search this site'
+    placeholder: 'Place, neighborhood, school or agent...'
+    title: 'Enter the terms you wish to search for.'
+    size: 15
+    max_length: 128
+    weight: -9
+    region: block
+  submit:
+    text: Search
+    image_path: ''
+    weight: -9
+    region: popup
+  content:
+    page: node_search
+    types:
+      article: '0'
+      banner: '0'
+      contact_us: '0'
+      luxury_listings: '0'
+      page: '0'
+      simplenews_issue: '0'
+      testimonials: '0'
+      trading: '0'
+      webform: '0'
+      work_together: '0'
+    other:
+      help_search: '0'
+      user_search: '0'
+    selector:
+      type: select
+      label_visibility: true
+      label: 'Search for'
+    any:
+      text: '- Any -'
+      restricts: false
+      force: false
+    excluded:
+      article: '0'
+      banner: '0'
+      contact_us: '0'
+      luxury_listings: '0'
+      page: '0'
+      simplenews_issue: '0'
+      testimonials: '0'
+      trading: '0'
+      webform: '0'
+      work_together: '0'
+    weight: -8
+    region: block
+  taxonomy:
+    city:
+      type: disabled
+      depth: 0
+      label_visibility: false
+      label: ''
+      all_text: '- Any -'
+      weight: 0
+      region: block
+    property:
+      type: select
+      depth: 8
+      label_visibility: false
+      label: ''
+      all_text: '- Any -'
+      weight: -10
+      region: block
+    tags:
+      type: disabled
+      depth: 0
+      label_visibility: false
+      label: ''
+      all_text: '- Any -'
+      weight: 0
+      region: block
+    trade:
+      type: disabled
+      depth: 0
+      label_visibility: false
+      label: ''
+      all_text: '- Any -'
+      weight: 0
+      region: block
+    trading:
+      type: disabled
+      depth: 0
+      label_visibility: false
+      label: ''
+      all_text: '- Any -'
+      weight: 0
+      region: block
+  criteria:
+    or:
+      display: false
+      label: 'Containing any of the words'
+      weight: 4
+      region: block
+    phrase:
+      display: false
+      label: 'Containing the phrase'
+      weight: 5
+      region: block
+    negative:
+      display: false
+      label: 'Containing none of the words'
+      weight: 6
+      region: block
+  languages:
+    languages:
+      current: '0'
+      en-gb: '0'
+      und: '0'
+      zxx: '0'
+    selector:
+      type: select
+      label_visibility: true
+      label: Languages
+    any:
+      text: '- Any -'
+      restricts: false
+      force: false
+    weight: 7
+    region: block
+  paths:
+    selector:
+      type: select
+      label_visibility: true
+      label: 'Customize your search'
+    list: ''
+    separator: +
+    weight: 8
+    region: block
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

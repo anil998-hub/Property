@@ -1,0 +1,29 @@
+uuid: a7e41eb6-025d-44be-a689-a3ab741483f9
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - views.view.house
+  module:
+    - system
+    - views
+  theme:
+    - property
+id: property_views_block__house_block_1
+theme: property
+region: content
+weight: -10
+provider: null
+plugin: 'views_block:house-block_1'
+settings:
+  id: 'views_block:house-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

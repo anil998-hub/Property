@@ -1,0 +1,26 @@
+uuid: a7f60d90-247c-4cf0-a8c1-83b4c8f6ecec
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.full_html
+    - node.type.work_together
+  module:
+    - text
+id: node.work_together.body
+field_name: body
+entity_type: node
+bundle: work_together
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

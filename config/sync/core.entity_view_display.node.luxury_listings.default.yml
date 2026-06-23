@@ -1,0 +1,185 @@
+uuid: 254a2c63-b100-44ca-8c2d-6dabd543c9cb
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.luxury_listings.body
+    - field.field.node.luxury_listings.field_baths
+    - field.field.node.luxury_listings.field_beds
+    - field.field.node.luxury_listings.field_city
+    - field.field.node.luxury_listings.field_city_image
+    - field.field.node.luxury_listings.field_deatils
+    - field.field.node.luxury_listings.field_description
+    - field.field.node.luxury_listings.field_image
+    - field.field.node.luxury_listings.field_list
+    - field.field.node.luxury_listings.field_metatag
+    - field.field.node.luxury_listings.field_money
+    - field.field.node.luxury_listings.field_properties
+    - field.field.node.luxury_listings.field_property_details
+    - field.field.node.luxury_listings.field_rooms
+    - field.field.node.luxury_listings.field_sqft
+    - field.field.node.luxury_listings.field_trade
+    - field.field.node.luxury_listings.field_videos
+    - image.style.wide
+    - node.type.luxury_listings
+  module:
+    - file
+    - image
+    - link
+    - metatag
+    - options
+    - text
+    - user
+id: node.luxury_listings.default
+targetEntityType: node
+bundle: luxury_listings
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_baths:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_beds:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_city:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_city_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_deatils:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_list:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_metatag:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_money:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_properties:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_property_details:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_rooms:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_sqft:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_trade:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_videos:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

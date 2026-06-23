@@ -1,0 +1,11 @@
+uuid: 4a21b2af-91c6-4343-8f57-5662b152109e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.testimonials
+id: node.testimonials
+target_entity_type_id: node
+target_bundle: testimonials
+default_langcode: site_default
+language_alterable: false
