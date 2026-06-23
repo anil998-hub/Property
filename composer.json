@@ -36,6 +36,7 @@
         "drupal/twig_tweak": "^3.4",
         "drupal/views_infinite_scroll": "^2.0",
         "drupal/webform": "^6.2",
+        "drupal/xmlsitemap": "^2.0",
         "webflo/drupal-finder": "1.3.0"
     },
     "conflict": {
