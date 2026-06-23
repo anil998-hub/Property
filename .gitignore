@@ -16,3 +16,5 @@ Thumbs.db
 .DS_Store
 Thumbs.db
 composer.lock
+/modules/contrib/
+/modules/contrib/*
