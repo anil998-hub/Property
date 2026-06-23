@@ -4,6 +4,7 @@ global-styling:
     theme:
       https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css: {}
       https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css: {}
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css : {}
       https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400,500,700&lang : {}
       https://fonts.googleapis.com/css?family=Google+Sans+Text:400&text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&lang=en : {}
 
