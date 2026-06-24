@@ -17,89 +17,156 @@
 * @ingroup themeable
 */
 #}
- {% set property_id = row.content['#row'].field_properties_taxonomy_term_field_data__node__field_prope %}
+{% set property_id = row.content['#row'].field_properties_taxonomy_term_field_data__node__field_prope %}
 {% if property_terms %}
-<div class="wrap-categories-sw">
-    <div class="swiper swiper-initialized swiper-horizontal sw-layout style-pagination" dir="ltr">
-        <div class="swiper-wrapper">
-            {% for term in property_terms %}
-                <div class="swiper-slide swiper-slide" style="width: 188.333px; margin-right: 30px;">
-                    <a href="#" 
-                       id="{{ term.id }}" 
-                       class="categories-item {% if term.id == property_id %}active{% endif %}"
-                       data-term-id="{{ term.id }}">
-                        <div class="icon-box">
-                            {% if term.image %}
-                                <img src="{{ term.image }}" alt="{{ term.name }}"
-                                    style="max-width: 100%; height: auto; border-radius: 5px;">
-                            {% endif %}
-                        </div>
-                        <div class="content text-center">
-                            <h5>{{ term.name }}</h5>
-                            <p class="mt-4 text-1">
-                                {# Use attribute access to get count, default to 0 if not found #}
-                               {{ property_counts[term.id]|default(0) }} Properties
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="sw-pagination sw-pagination-layout text-center d-lg-none d-block mt-20 spd2 swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
-            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-        </div>
-    </div>
-</div>
+	<div class="wrap-categories-sw">
+		<div class="swiper swiper-initialized swiper-horizontal sw-layout style-pagination" dir="ltr">
+			<div class="swiper-wrapper">
+				{% for term in property_terms %}
+					<div class="swiper-slide swiper-slide" style="width: 188.333px; margin-right: 30px;">
+						<a href="#" id="{{ term.id }}" class="categories-item {% if term.id == property_id %}active{% endif %}" data-term-id="{{ term.id }}">
+							<div class="icon-box">
+								{% if term.image %}
+									<img src="{{ term.image }}" alt="{{ term.name }}" style="max-width: 100%; height: auto; border-radius: 5px;">
+								{% endif %}
+							</div>
+							<div class="content text-center">
+								<h5>{{ term.name }}</h5>
+								<p
+									class="mt-4 text-1">
+									{# Use attribute access to get count, default to 0 if not found #}
+									{{ property_counts[term.id]|default(0) }}
+									Properties
+								</p>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="sw-pagination sw-pagination-layout text-center d-lg-none d-block mt-20 spd2 swiper-pagination-bullets swiper-pagination-horizontal">
+				<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+			</div>
+		</div>
+	</div>
 {% endif %}
 
 
-{# {% if property_terms %}
-<div class="wrap-categories-sw">
-    <div class="swiper swiper-initialized swiper-horizontal sw-layout style-pagination" dir="ltr">
-        <div class="swiper-wrapper">
 
-             {% for term in property_terms %}
-            <div class="swiper-slide swiper-slide" style="width: 188.333px; margin-right: 30px;"><a href="#" id ="{{ term.id }}"
-                    class="categories-item ">
-                    <div class="icon-box">
-                    {% if term.image %}
-                <img src="{{ term.image }}" alt="{{ term.name }}"
-                    style="max-width: 100%; height: auto; border-radius: 5px;">
-            
-            {% endif %}
-                    </div>
-                    <div class="content text-center">
-                        <h5>{{ term.name }}</h5>
-                        <p class="mt-4 text-1">   {{ property_counts[term.id]|default(0) }} Properties</p>
-                    </div>
-                </a></div>
- {% endfor %}
-
-        </div>
-        <div
-            class="sw-pagination sw-pagination-layout text-center d-lg-none d-block mt-20 spd2 swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
-            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
-    </div>
-</div>
-
-{% endif %} #}
 
 {% if title %}
-<h3>{{ title }}</h3>
+	<h3>{{ title }}</h3>
 {% endif %}
 <div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767" data-screen="767" data-preview="1" data-space="15">
-					<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
-{% for row in rows %}
+	<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
+		{% for row in rows %}
+			{# {{ dump(row.content['#row']._entity.get('field_image').value) }} #}
+			{%
+            set row_classes = [
+            default_row_class ? 'views-row',
+            ]
+            %}
 
-{%
-set row_classes = [
-default_row_class ? 'views-row',
-]
-%}
- 
-    {{- row.content -}}
-    	
-    {% endfor %}
-    </div>
-					<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
+			{{- row.content -}}
+
+		{% endfor %}
+	</div>
+	<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
+</div>
+
+
+<div class="swiper swiper-initialized swiper-horizontal style-pagination tf-sw-mobile-1 sw-swiper-767 swiper-backface-hidden" dir="ltr">
+	<div class="swiper-wrapper" style="transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(0px, 0px, 0px);">
+		{% for row in rows %}
+
+			{%
+            set row_classes = [
+            default_row_class ? 'views-row',
+            ]
+            %}
+
+			{# {{- row.content -}} #}
+			<div class="swiper-slide" style="width: 384px; margin-right: 15px;">
+				<div class="box-house hover-img ">
+					<div class="image-wrap">
+
+						{# {{ dump(row.content['#row']._entity.get('field_image').value) }} #}
+{% set entity = row.content['#row']._entity %}
+
+{% if entity.field_image.entity %}
+  {% set image_url = file_url(entity.field_image.entity.uri.value) %}
+  {% set image_alt = entity.field_image.alt %}
+
+  <a href="{{ title_url }}">
+    <img src="{{ image_url }}" alt="{{ image_alt }}">
+  </a>
+{% endif %}
+						<ul class="box-tag flex gap-8 ">
+							<li class="flat-tag text-4 bg-main fw-6 text_white">Featured</li>
+							<li class="flat-tag text-4 bg-3 fw-6 text_white">For Sale</li>
+						</ul>
+						<div class="list-btn flex gap-8 ">
+							<a href="#" class="btn-icon save hover-tooltip">
+								<i class="icon-save"></i>
+								<span class="tooltip">Add Favorite</span>
+							</a>
+							<a href="#" class="btn-icon find hover-tooltip">
+								<i class="icon-find-plus"></i>
+								<span class="tooltip">Quick View</span>
+							</a>
+						</div>
+					</div>
+					{# {{ raw_value }} #}
+
+
+					<div class="content">
+						<h5 class="title">
+							{% set node = row.content['#row']._entity %}
+							{% set raw_title = node.get('title').value %}
+							{% set title_url = path('entity.node.canonical', {'node': node.id()}) %}
+							<a href="{{ title_url }}">{{ raw_title }}</a>
+						</h5>
+						{% set body = row.content['#row']._entity.get('body').value %}
+						<p class="location text-1 line-clamp-1 ">
+							<i class="icon-location"></i>
+							{{ body|render|striptags }}</p>
+						<ul class="meta-list flex">
+							{% set beds = row.content['#row']._entity.get('field_beds').value %}
+							<li class="text-1 flex">
+								<span>{{ beds }}</span>Beds</li>
+							{% set body = row.content['#row']._entity.get('body').value %}
+							<li class="text-1 flex">
+								{% set baths = row.content['#row']._entity.get('field_baths').value %}
+								<span>{{ baths }}</span>Baths</li>
+							{% set sqft = row.content['#row']._entity.get('field_sqft').value %}
+							<li class="text-1 flex">
+								<span>{{ sqft }}</span>Sqft</li>
+						</ul>
+						<div class="bot flex justify-between items-center">
+							{% set money = row.content['#row']._entity.get('field_money').value %}
+							<h5 class="price">{{ money }}</h5>
+							<div class="wrap-btn flex">
+								<a href="#" class="compare flex gap-8 items-center text-1">
+									<i class="icon-compare"></i>Compare</a>
+								<a class="tf-btn style-border pd-4" href="{{ title_url }}">Details</a>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
+		{% endfor %}
+
+
+	</div>
+	<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block spd446 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+		<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+	</div>
+</div>

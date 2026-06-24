@@ -1,13 +1,13 @@
 {% set raw_images = fields.field_city_image.content|render|striptags|trim %}
 
-<div class="swiper-container rtl-slider">
-  <div class="swiper-wrapper">
+<div class="swiper swiper-initialized swiper-horizontal infiniteslide wrap-partners mb-40">
+  <div class="swiper-wrapper" style="transition-duration: 2000ms; transform: translate3d(-1310px, 0px, 0px);">
     {% if raw_images %}
       {% set image_list = raw_images|split(', ') %}
       
       {% for image_path in image_list %}
         {% set clean_path = image_path|trim %}
-        <div class="swiper-slide partner-item style-2" data-swiper-slide-index="{{ loop.index0 }}">
+        <div class="swiper-slide partner-item style-2" data-swiper-slide-index="{{ loop.index0 }}" style="width: 188.333px; margin-right: 30px;">
           <img src="{{ clean_path }}" alt="City image {{ loop.index }}">
         </div>
       {% endfor %}
