@@ -837,3 +837,8 @@ body > #user-login-form:first-child:last-child {
     font-weight: 900;
     content: "\f545"; /* fa-ruler */
 }
+
+/* label[for="edit-full-name"],
+label[for="edit-mobile-number"] {
+    display: none;
+} */

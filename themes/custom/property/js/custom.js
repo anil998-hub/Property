@@ -607,3 +607,115 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+(function (Drupal) {
+  'use strict';
+
+  Drupal.behaviors.footerMenuToggle = {
+    attach: function (context, settings) {
+      
+      // Function to check if we're on mobile
+      function isMobile() {
+        return window.innerWidth < 768; // Adjust breakpoint as needed
+        // For tablet and mobile: return window.innerWidth < 992;
+      }
+      
+      // Only run if on mobile
+      if (!isMobile()) {
+        return;
+      }
+      
+      var menus = context.querySelectorAll('.footer-menu-list.footer-col-block.style-2');
+      
+      menus.forEach(function(menu, index) {
+        if (menu.dataset.initialized) return;
+        menu.dataset.initialized = true;
+        
+        var heading = menu.querySelector('.title');
+        var content = menu.querySelector('.tf-collapse-content');
+        
+        
+        if (!heading || !content) return;
+        
+        // Set initial state - closed on mobile
+        content.style.height = '0px';
+        content.style.overflow = 'hidden';
+        content.style.transition = 'height 0.3s ease';
+        
+        // Click handler on the entire menu container
+        menu.addEventListener('click', function(e) {
+          // Don't trigger on links
+          if (e.target.closest('a')) return;
+          
+          e.preventDefault();
+          e.stopPropagation();
+          
+          
+          menu.classList.toggle('open');
+          
+          if (menu.classList.contains('open')) {
+            var fullHeight = content.scrollHeight;
+            content.style.height = fullHeight + 'px';
+          } else {
+            content.style.height = '0px';
+          }
+        });
+        
+        // Make headings look clickable
+        heading.style.cursor = 'pointer';
+      });
+    }
+  };
+
+})(Drupal);
+
+
+
+// (function (Drupal) {
+//   'use strict';
+
+//   Drupal.behaviors.footerMenuToggle = {
+//     attach: function (context, settings) {
+      
+//       var menus = context.querySelectorAll('.footer-menu-list.footer-col-block.style-2');
+      
+//       menus.forEach(function(menu, index) {
+//         if (menu.dataset.initialized) return;
+//         menu.dataset.initialized = true;
+        
+//         var heading = menu.querySelector('.title');
+//         var content = menu.querySelector('.tf-collapse-content');
+        
+        
+//         if (!heading || !content) return;
+        
+//         // Set initial state - closed
+//         content.style.height = '0px';
+//         content.style.overflow = 'hidden';
+//         content.style.transition = 'height 0.3s ease';
+        
+//         // Click handler on the entire menu container instead of just heading
+//         menu.addEventListener('click', function(e) {
+//           // Check if click is on heading or inside the menu
+//           // But not on links inside the content
+//           if (e.target.closest('a')) return; // Don't trigger on links
+          
+//           e.preventDefault();
+//           e.stopPropagation();
+          
+          
+//           menu.classList.toggle('open');
+          
+//           if (menu.classList.contains('open')) {
+//             var fullHeight = content.scrollHeight;
+//             content.style.height = fullHeight + 'px';
+//           } else {
+//             content.style.height = '0px';
+//           }
+//         });
+//       });
+//     }
+//   };
+
+// })(Drupal);

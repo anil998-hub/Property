@@ -15,7 +15,7 @@ global-styling:
   js:
      js/custom.js: {}
      https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js: {}
-    #  https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js: {}
+     https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js: {}
      js/4bd1b696-ece213275b9b2643.js: {}
      js/4e6af11a-9acf14fdb8a6245a.js: {}
      js/9dadc25a-cf3239c265367e72.js: {}

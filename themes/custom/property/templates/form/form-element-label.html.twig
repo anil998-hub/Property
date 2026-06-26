@@ -21,7 +21,16 @@
     required ? 'form-required',
   ]
 %}
-{% if title is not empty or required -%}
+{% set hidden_labels = ['Full Name', 'Mobile Number'] %}
 
-  <label{{ attributes.addClass(classes) }}>{{ title }}</label>
-{%- endif %}
+{% if title is not empty or required %}
+  {% if title in hidden_labels %}
+    <label{{ attributes.addClass(classes).setAttribute('style', 'display:none;') }}>
+      {{ title }}
+    </label>
+  {% else %}
+    <label{{ attributes.addClass(classes) }}>
+      {{ title }}
+    </label>
+  {% endif %}
+{% endif %}
