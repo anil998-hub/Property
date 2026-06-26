@@ -19,7 +19,7 @@
   ]
 %} 
 {% if content %}
-<div class="offcanvas offcanvas-start mobile-nav-wrap show" tabindex="-1" id="menu-mobile" aria-labelledby="menu-mobile" aria-modal="true" role="dialog">
+<div class="offcanvas offcanvas-start mobile-nav-wrap" tabindex="-1" id="menu-mobile" aria-labelledby="menu-mobile" aria-modal="true" role="dialog">
 	{{ content }}
 </div>
 {% endif %}

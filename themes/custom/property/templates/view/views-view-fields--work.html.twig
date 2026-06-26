@@ -1,6 +1,6 @@
 {% set raw_images = fields.field_city_image.content|render|striptags|trim %}
 
-<div class="swiper swiper-initialized swiper-horizontal infiniteslide wrap-partners mb-40">
+<div class="swiper swiper-initialized swiper-horizontal infiniteslide wrap-partners mb-40 together">
   <div class="swiper-wrapper" style="transition-duration: 2000ms; transform: translate3d(-1310px, 0px, 0px);">
     {% if raw_images %}
       {% set image_list = raw_images|split(', ') %}

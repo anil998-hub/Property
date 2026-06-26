@@ -33,9 +33,9 @@
          {% if element['#required'] %}required{% endif %} />
          
 {# For Name Field #}  
-{# {% elseif id == 'edit-name' %}
+{% elseif id == 'edit-full-name' %}
   {% set classes = ['input', 'input-name', 'form-control'] %}
-  {% set placeholder_text = 'Enter your full name' %}
+  {% set placeholder_text = 'Your Name' %}
   {% set input_type = 'text' %}
   
   <input type="{{ input_type }}" 
@@ -44,7 +44,20 @@
          id="{{ id }}" 
          name="{{ element['#name']|default('name') }}"
          value="{{ element['#default_value']|default('') }}"
-         {% if element['#required'] %}required{% endif %} /> #}
+         {% if element['#required'] %}required{% endif %} />
+
+ {% elseif id == 'edit-mobile-number' %}
+  {% set classes = ['input', 'input-name', 'form-control'] %}
+  {% set placeholder_text = 'Mobile Number' %}
+  {% set input_type = 'text' %}
+  
+  <input type="{{ input_type }}" 
+         class="{{ classes|join(' ') }}" 
+         placeholder="{{ placeholder_text }}" 
+         id="{{ id }}" 
+         name="{{ element['#name']|default('name') }}"
+         value="{{ element['#default_value']|default('') }}"
+         {% if element['#required'] %}required{% endif %} />
          
 {% elseif id == 'edit-submit--2' %} 
 
@@ -89,6 +102,7 @@
          id="{{ id }}" 
          name="{{ element['#name']|default('name') }}"
          value="{{ button_value }}"
+          style="font-size: 20px; font-weight: 600; padding: 12px 35px;"
          {% if element['#required'] %}required{% endif %} />
          </div>
 {% elseif id == 'edit-keys' %} 

@@ -85,7 +85,7 @@
     const $applyButton = $form.find('input[type="submit"]');
 
     if (!$formSelect.length) {
-      console.log('Select field not found');
+      // console.log('Select field not found');
       return;
     }
 
@@ -180,40 +180,430 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   var swiper = new Swiper('.rtl-slider', {
-//     direction: 'horizontal',
-//     rtl: true,
-//     slidesPerView: 'auto',
-//     spaceBetween: 30,
-//     loop: true,
-//     loopAdditionalSlides: 5,  // Extra slides for smooth loop
-//     autoplay: {
-//       delay: 0,
-//       disableOnInteraction: false,
-//       reverseDirection: true,
-//       pauseOnMouseEnter: true,
-//       waitForTransition: false,
-//     },
-//     speed: 5000,
-//     freeMode: true,
-//     freeModeMomentum: false,  // Disable momentum for smooth continuous scroll
-//     centeredSlides: false,
+document.addEventListener('DOMContentLoaded', function() {
+    let swiperInstance = null;
+    let isMobileLayout = window.innerWidth < 992;
+
+    function initSwiper() {
+        const currentIsMobile = window.innerWidth < 992;
+        
+        // Destroy existing swiper if it exists
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true);
+            swiperInstance = null;
+            
+            // Reset any inline styles that Swiper added
+            const wrapper = document.querySelector('.searching .swiper-wrapper');
+            if (wrapper) {
+                wrapper.style.display = '';
+                wrapper.style.flexWrap = '';
+                wrapper.style.transform = '';
+                wrapper.style.transition = '';
+            }
+            
+            document.querySelectorAll('.searching .swiper-slide').forEach(slide => {
+                slide.style.width = '';
+                slide.style.marginRight = '';
+                slide.style.flexShrink = '';
+            });
+            
+            // Show pagination only on mobile
+            const pagination = document.querySelector('.sw-pagination');
+            if (pagination) {
+                pagination.style.display = currentIsMobile ? '' : 'none';
+            }
+        }
+
+        // Only initialize on mobile
+        if (currentIsMobile) {
+            // Swiper configuration for mobile only
+            const swiperConfig = {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                centeredSlides: false,
+                loop: false,
+                
+                // Pagination configuration
+                pagination: {
+                    el: '.sw-pagination',
+                    clickable: true,
+                    dynamicBullets: false,
+                    bulletClass: 'swiper-pagination-bullet',
+                    bulletActiveClass: 'swiper-pagination-bullet-active',
+                },
+                
+                // Responsive breakpoints for mobile
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    576: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                    }
+                },
+                
+                // Autoplay only on mobile
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: true,
+                },
+                
+                // Events
+                on: {
+                    slideChange: function() {
+                        const activeIndex = this.activeIndex;
+                        const slides = this.slides;
+                        
+                        slides.forEach((slide, index) => {
+                            const link = slide.querySelector('.categories-item');
+                            if (link) {
+                                if (index === activeIndex) {
+                                    link.classList.add('show');
+                                } else {
+                                    link.classList.remove('show');
+                                }
+                            }
+                        });
+                    }
+                }
+            };
+
+            // Initialize Swiper
+            swiperInstance = new Swiper('.searching', swiperConfig);
+            
+            // Show pagination on mobile
+            const pagination = document.querySelector('.sw-pagination');
+            if (pagination) {
+                pagination.style.display = '';
+            }
+        } else {
+            // Desktop: Reset styles and show all items
+            const wrapper = document.querySelector('.searching .swiper-wrapper');
+            if (wrapper) {
+                wrapper.style.display = 'flex';
+                wrapper.style.flexWrap = 'wrap';
+                wrapper.style.justifyContent = 'center';
+                wrapper.style.gap = '20px';
+                wrapper.style.transform = 'none';
+            }
+            
+            document.querySelectorAll('.searching .swiper-slide').forEach(slide => {
+                slide.style.width = 'auto';
+                slide.style.marginRight = '0';
+                slide.style.flexShrink = '0';
+            });
+            
+            // Hide pagination on desktop
+            const pagination = document.querySelector('.sw-pagination');
+            if (pagination) {
+                pagination.style.display = 'none';
+            }
+        }
+    }
+
+    // Initialize on page load
+    initSwiper();
+
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            initSwiper();
+        }, 300);
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.property', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        centeredSlides: false,
+        loop: false,
+        
+        // Pagination configuration
+        pagination: {
+            el: '.sw-pagination',
+            clickable: true,
+            dynamicBullets: false,
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active',
+        },
+        
+        // Responsive breakpoints
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            576: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            }
+        },
+        
+        // Optional: Auto play
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        
+        // Optional: Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        
+        // Events
+        on: {
+            init: function() {
+                // console.log('Swiper initialized');
+            },
+            slideChange: function() {
+                // Update active class on categories
+                const activeIndex = this.activeIndex;
+                const slides = this.slides;
+                
+                slides.forEach((slide, index) => {
+                    const link = slide.querySelector('.categories-item');
+                    if (link) {
+                        if (index === activeIndex) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        }
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.together', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        centeredSlides: false,
+        loop: false,
+        
+        // Pagination configuration
+        pagination: {
+            el: '.sw-pagination',
+            clickable: true,
+            dynamicBullets: false,
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active',
+        },
+        
+        // Responsive breakpoints
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            576: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            }
+        },
+        
+        // Optional: Auto play
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        
+        // Optional: Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        
+        // Events
+        on: {
+            init: function() {
+                // console.log('Swiper initialized');
+            },
+            slideChange: function() {
+                // Update active class on categories
+                const activeIndex = this.activeIndex;
+                const slides = this.slides;
+                
+                slides.forEach((slide, index) => {
+                    const link = slide.querySelector('.categories-item');
+                    if (link) {
+                        if (index === activeIndex) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        }
+    });
+
+    // ========== ROUTING LOGIC ==========
     
-//     // Responsive breakpoints
-//     breakpoints: {
-//       320: {
-//         slidesPerView: 2,
-//         spaceBetween: 20
-//       },
-//       768: {
-//         slidesPerView: 3,
-//         spaceBetween: 25
-//       },
-//       1024: {
-//         slidesPerView: 5,
-//         spaceBetween: 30
-//       }
-//     }
-//   });
-// });
+    // Option 1: Route on click using data attribute
+    document.querySelectorAll('.categories-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the term ID from data attribute
+            const termId = this.dataset.termId;
+            
+            if (termId) {
+                // Redirect to property listing page with category filter
+                window.location.href = '/properties?category=' + termId;
+                // OR
+                // window.location.href = '/category/' + termId;
+                // OR for Drupal
+                // window.location.href = Drupal.url('properties/' + termId);
+            }
+        });
+    });
+
+    // Option 2: Route on click using ID (if data-term-id not available)
+    document.querySelectorAll('.categories-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the ID from the element
+            const termId = this.id;
+            
+            if (termId) {
+                // Redirect
+                window.location.href = '/properties?category=' + termId;
+            }
+        });
+    });
+
+    // Option 3: Route to specific URL from href attribute
+    document.querySelectorAll('.categories-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Don't prevent default if using href
+            // Just let the browser follow the link
+            const href = this.getAttribute('href');
+            if (href && href !== '#') {
+                // Let the browser navigate naturally
+                return true;
+            }
+            
+            e.preventDefault();
+            const termId = this.dataset.termId || this.id;
+            window.location.href = '/properties?category=' + termId;
+        });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.mobile-test', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        centeredSlides: false,
+        loop: false,
+        
+        // Pagination configuration
+        pagination: {
+            el: '.sw-pagination',
+            clickable: true,
+            dynamicBullets: false,
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active',
+        },
+        
+        // Responsive breakpoints
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            576: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            }
+        },
+        
+        // Optional: Auto play
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        
+        // Optional: Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        
+        // Events
+        on: {
+            init: function() {
+                // console.log('Swiper initialized');
+            },
+            slideChange: function() {
+                // Update active class on categories
+                const activeIndex = this.activeIndex;
+                const slides = this.slides;
+                
+                slides.forEach((slide, index) => {
+                    const link = slide.querySelector('.categories-item');
+                    if (link) {
+                        if (index === activeIndex) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        }
+    });
+});

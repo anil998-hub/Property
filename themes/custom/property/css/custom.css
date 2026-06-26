@@ -43,8 +43,19 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
   font-size: 14px;
   cursor: pointer;
 }
-
-
+#menu-mobile-menu li.menu-item-has-children-mobile {
+    position: relative !important;
+}
+#menu-mobile-menu li.menu-item-has-children-mobile > a:after{
+ transition: all .3s ease !important;
+  position: absolute !important;
+  right: 0 !important;
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 900 !important;
+  content: "\f107" !important;  /* Font Awesome down arrow */
+  font-size: 14px !important;
+  cursor: pointer;
+}
 
 .icon-location:before {
     content: "\f3c5" !important;     /* Font Awesome location arrow [citation:2][citation:5] */
@@ -71,6 +82,26 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
     
 }
 
+.icon-close {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+.icon-close:before {
+    content: "\f00d"; /* Unicode for fa-times */
+}
+/* Or using newer xmark */
+.icon-close:before {
+    content: "\f00d"; /* Same unicode for both */
+}
+.icon-menu {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Required for solid icons */
+}
+
+.icon-menu:before {
+    content: "\f0c9"; /* Unicode for fa-bars */
+}
 
 .page-title {
     position: relative;
@@ -760,3 +791,49 @@ body > #user-login-form:first-child:last-child {
     transform: scale(1.05);
 }
 
+
+
+
+
+
+
+/* First, ensure Font Awesome is loaded */
+/* Add to your HTML: */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> */
+
+/* Then use Font Awesome */
+.icon-Garage-1:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f0e9"; /* fa-car */
+}
+
+.icon-SlidersHorizontal:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f1de"; /* fa-sliders-h */
+}
+
+.icon-Bed-2:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f236"; /* fa-bed */
+}
+
+.icon-Bathtub:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f2cd"; /* fa-bath */
+}
+
+.icon-Crop:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f125"; /* fa-crop */
+}
+
+.icon-Ruler:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f545"; /* fa-ruler */
+}
