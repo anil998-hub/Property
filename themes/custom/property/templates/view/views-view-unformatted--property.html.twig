@@ -95,7 +95,7 @@
 
 						{# {{ dump(row.content['#row']._entity.get('field_image').value) }} #}
 {% set entity = row.content['#row']._entity %}
-
+ 
 {% if entity.field_image.entity %}
   {% set image_url = file_url(entity.field_image.entity.uri.value) %}
   {% set image_alt = entity.field_image.alt %}
