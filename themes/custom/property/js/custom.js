@@ -284,19 +284,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             // Desktop: Reset styles and show all items
-            const wrapper = document.querySelector('.searching .swiper-wrapper');
-            if (wrapper) {
-                wrapper.style.display = 'flex';
-                wrapper.style.flexWrap = 'wrap';
-                wrapper.style.justifyContent = 'center';
-                wrapper.style.gap = '20px';
-                wrapper.style.transform = 'none';
-            }
-            
+            // const wrapper = document.querySelector('.searching .swiper-wrapper');
+            // if (wrapper) {
+            //     wrapper.style.display = 'flex';
+            //     wrapper.style.flexWrap = 'wrap';
+            //     wrapper.style.justifyContent = 'center';
+            //     wrapper.style.gap = '20px';
+            //     wrapper.style.transform = 'none';
+            // }
+           
             document.querySelectorAll('.searching .swiper-slide').forEach(slide => {
-                slide.style.width = 'auto';
-                slide.style.marginRight = '0';
-                slide.style.flexShrink = '0';
+                slide.style.width = '188.333px';
+                slide.style.marginRight = '30px';
+                // slide.style.flexShrink = '0';
             });
             
             // Hide pagination on desktop
