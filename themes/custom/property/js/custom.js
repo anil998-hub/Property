@@ -530,6 +530,72 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Only initialize on mobile and tablet (screens less than 992px)
+    if (window.innerWidth < 992) {
+        const swiper = new Swiper('.mobile-search', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            centeredSlides: false,
+            loop: false,
+            
+            // Pagination configuration
+            pagination: {
+                el: '.sw-pagination',
+                clickable: true,
+                dynamicBullets: false,
+                bulletClass: 'swiper-pagination-bullet',
+                bulletActiveClass: 'swiper-pagination-bullet-active',
+            },
+            
+            // Responsive breakpoints
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                }
+            },
+            
+            // Optional: Auto play
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true,
+            },
+            
+            // Events
+            on: {
+                init: function() {
+                    // console.log('Swiper initialized');
+                },
+                slideChange: function() {
+                    // Update active class on categories
+                    const activeIndex = this.activeIndex;
+                    const slides = this.slides;
+                    
+                    slides.forEach((slide, index) => {
+                        const link = slide.querySelector('.categories-item');
+                        if (link) {
+                            if (index === activeIndex) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+});
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.mobile-test', {

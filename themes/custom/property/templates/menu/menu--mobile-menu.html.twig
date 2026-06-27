@@ -24,135 +24,162 @@
 {{ menus.menu_links(items, attributes, 0) }}
 
 {% macro menu_links(items, attributes, menu_level) %}
-  {% import _self as menus %}
-  
-  {% if items %}
-    {# Level 0: Main menu wrapper #}
-    {% if menu_level == 0 %}
-      <div class="offcanvas-body inner-mobile-nav">
-        <div class="mb-body">
-          <ul id="menu-mobile-menu">
-    {% else %}
-      {# Level 1: Parent dropdown #}
-      {% if menu_level == 1 %}
-        <ul class="sub-mobile">
-      {% else %}
-        {# Level 2+: Sub dropdowns #}
-        <ul class="sub-mobile">
-      {% endif %}
-    {% endif %}
-    
-    {% for item in items %}
-      {# Check if item has children #}
-      {% set has_children = item.below is defined and item.below|length > 0 %}
-      
-      {# Build li classes #}
-      {% set li_classes = ['menu-item'] %}
-      
-      {# Add has-children-mobile for level 0 items with children #}
-      {% if menu_level == 0 and has_children %}
-        {% set li_classes = li_classes|merge(['menu-item-has-children-mobile']) %}
-      {% endif %}
-      
-      {# Add has-children-mobile-2 for level 1 items with children #}
-      {% if menu_level == 1 and has_children %}
-        {% set li_classes = li_classes|merge(['menu-item-has-children-mobile-2']) %}
-      {% endif %}
-      
-      {# Add additional classes from item #}
-      {% if item.class is defined and item.class %}
-        {% set li_classes = li_classes|merge(item.class|split(' ')) %}
-      {% endif %}
-      
-      {# Add current-menu-item class for active trail #}
-      {% if item.in_active_trail %}
-        {% set li_classes = li_classes|merge(['current-menu-item']) %}
-      {% endif %}
-      
-      {# Add current-item class for level 2+ active trail #}
-      {% if menu_level >= 2 and item.in_active_trail %}
-        {% set li_classes = li_classes|merge(['current-item']) %}
-      {% endif %}
-      
-      {# Build link classes #}
-      {% set link_classes = [] %}
-      {% if menu_level == 0 %}
-        {% set link_classes = link_classes|merge(['item-menu-mobile']) %}
-      {% endif %}
-      
-      {# Determine if dropdown should be expanded #}
-      {% set is_expanded = item.in_active_trail ? 'true' : 'false' %}
-      {% set is_collapsed = item.in_active_trail ? '' : 'collapsed' %}
-      {% set show_class = item.in_active_trail ? ' show' : '' %}
-      
-      {# Generate unique IDs #}
-      {% set dropdown_id = 'dropdown-menu-' ~ loop.index %}
-      {% if menu_level > 0 %}
-        {% set dropdown_id = 'sub-' ~ dropdown_id %}
-      {% endif %}
-      
-      <li class="{{ li_classes|join(' ') }}">
-        {# Render link #}
-        {% if has_children and menu_level == 0 %}
-          {# Level 0 with children - accordion toggle #}
-          <a href="#{{ dropdown_id }}" 
-             class="item-menu-mobile {{ is_collapsed }}" 
-             data-bs-toggle="collapse" 
-             aria-expanded="{{ is_expanded }}" 
-             aria-controls="{{ dropdown_id }}">
-            {{ item.title }}
-          </a>
-        {% elseif has_children and menu_level >= 1 %}
-          {# Level 1+ with children - accordion toggle #}
-          <a href="#{{ dropdown_id }}" 
-             class="item-menu-mobile {{ is_collapsed }}" 
-             data-bs-toggle="collapse" 
-             aria-expanded="{{ is_expanded }}" 
-             aria-controls="{{ dropdown_id }}">
-            {{ item.title }}
-          </a>
-        {% else %}
-          {# Regular link #}
-          <a href="{{ item.url }}" class="item-menu-mobile">
-            {{ item.title }}
-          </a>
-        {% endif %}
-        
-        {# Render children recursively #}
-        {% if has_children %}
-          {# Build submenu container with collapse #}
-          {% if menu_level == 0 %}
-            {# Level 0 children #}
-            <div id="{{ dropdown_id }}" 
-                 class="collapse{{ show_class }}" 
-                 data-bs-parent="#menu-mobile-menu">
-              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </div>
-          {% elseif menu_level == 1 %}
-            {# Level 1 children #}
-            <div id="{{ dropdown_id }}" 
-                 class="collapse{{ show_class }}" 
-                 data-bs-parent="#dropdown-menu-{{ loop.parent.loop.index }}">
-              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </div>
-          {% else %}
-            {# Level 2+ children #}
-            <div id="{{ dropdown_id }}" 
-                 class="collapse{{ show_class }}">
-              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </div>
-          {% endif %}
-        {% endif %}
-      </li>
-    {% endfor %}
-    
-    {# Close the current list #}
-    {% if menu_level == 0 %}
-          </ul>
-        </div>
-      </div>
-    {% else %}
-      </ul>
-    {% endif %}
-  {% endif %}
-{% endmacro %}
+	{% import _self as menus %}
+
+	{% if items %}
+		{# Level 0: Main menu wrapper #}
+		{% if menu_level == 0 %}
+			<div class="offcanvas-body inner-mobile-nav">
+				<div class="mb-body">
+					<ul id="menu-mobile-menu">
+					{% else %}
+						{# Level 1: Parent dropdown #}
+						{% if menu_level == 1 %}
+							<ul class="sub-mobile">
+							{% else %}
+								{# Level 2+: Sub dropdowns #}
+								<ul class="sub-mobile">
+								{% endif %}
+							{% endif %}
+
+							{% for item in items %}
+								{# Check if item has children #}
+								{% set has_children = item.below is defined and item.below|length > 0 %}
+
+								{# Build li classes #}
+								{% set li_classes = ['menu-item'] %}
+
+								{# Add has-children-mobile for level 0 items with children #}
+								{% if menu_level == 0 and has_children %}
+									{% set li_classes = li_classes|merge(['menu-item-has-children-mobile']) %}
+								{% endif %}
+
+								{# Add has-children-mobile-2 for level 1 items with children #}
+								{% if menu_level == 1 and has_children %}
+									{% set li_classes = li_classes|merge(['menu-item-has-children-mobile-2']) %}
+								{% endif %}
+
+								{# Add additional classes from item #}
+								{% if item.class is defined and item.class %}
+									{% set li_classes = li_classes|merge(item.class|split(' ')) %}
+								{% endif %}
+
+								{# Add current-menu-item class for active trail #}
+								{% if item.in_active_trail %}
+									{% set li_classes = li_classes|merge(['current-menu-item']) %}
+								{% endif %}
+
+								{# Add current-item class for level 2+ active trail #}
+								{% if menu_level >= 2 and item.in_active_trail %}
+									{% set li_classes = li_classes|merge(['current-item']) %}
+								{% endif %}
+
+								{# Build link classes #}
+								{% set link_classes = [] %}
+								{% if menu_level == 0 %}
+									{% set link_classes = link_classes|merge(['item-menu-mobile']) %}
+								{% endif %}
+
+								{# Determine if dropdown should be expanded #}
+								{% set is_expanded = item.in_active_trail ? 'true' : 'false' %}
+								{% set is_collapsed = item.in_active_trail ? '' : 'collapsed' %}
+								{% set show_class = item.in_active_trail ? ' show' : '' %}
+
+								{# Generate unique IDs #}
+								{% set dropdown_id = 'dropdown-menu-' ~ loop.index %}
+								{% if menu_level > 0 %}
+									{% set dropdown_id = 'sub-' ~ dropdown_id %}
+								{% endif %}
+
+								<li
+									class="{{ li_classes|join(' ') }}">
+									{# Render link #}
+									{% if has_children and menu_level == 0 %}
+										{# Level 0 with children - accordion toggle #}
+										<a href="#{{ dropdown_id }}" class="item-menu-mobile {{ is_collapsed }}" data-bs-toggle="collapse" aria-expanded="{{ is_expanded }}" aria-controls="{{ dropdown_id }}">
+											{{ item.title }}
+										</a>
+									{% elseif has_children and menu_level >= 1 %}
+										{# Level 1+ with children - accordion toggle #}
+										<a href="#{{ dropdown_id }}" class="item-menu-mobile {{ is_collapsed }}" data-bs-toggle="collapse" aria-expanded="{{ is_expanded }}" aria-controls="{{ dropdown_id }}">
+											{{ item.title }}
+										</a>
+									{% else %}
+										{# Regular link #}
+										<a href="{{ item.url }}" class="item-menu-mobile">
+											{{ item.title }}
+										</a>
+									{% endif %}
+
+									{# Render children recursively #}
+									{% if has_children %}
+										{# Build submenu container with collapse #}
+										{% if menu_level == 0 %}
+											{# Level 0 children #}
+											<div id="{{ dropdown_id }}" class="collapse{{ show_class }}" data-bs-parent="#menu-mobile-menu">
+												{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+											</div>
+										{% elseif menu_level == 1 %}
+											{# Level 1 children #}
+											<div id="{{ dropdown_id }}" class="collapse{{ show_class }}" data-bs-parent="#dropdown-menu-{{ loop.parent.loop.index }}">
+												{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+											</div>
+										{% else %}
+											{# Level 2+ children #}
+											<div id="{{ dropdown_id }}" class="collapse{{ show_class }}">
+												{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+											</div>
+										{% endif %}
+									{% endif %}
+								</li>
+							{% endfor %}
+
+							{# Close the current list #}
+							{% if menu_level == 0 %}
+							</ul>
+							<div class="support">
+								<a href="#" class="text-need">
+									Need help?</a>
+								<ul class="mb-info">
+									<li>Call Us Now:
+										<span class="number">9983605466</span>
+									</li>
+									<li>Support 24/7:
+										<a href="#">realestate.heavengold@gmail.com</a>
+									</li>
+									{# <li>
+										<div class="wrap-social">
+											<p>Follow us:</p>
+											<ul class="tf-social style-2">
+												<li>
+													<a href="#">
+														<i class="icon-fb"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<i class="icon-X"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<i class="icon-linked"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<i class="icon-ins"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li> #}
+								</ul>
+							</div>
+						</div>
+					</div>
+			{% else %}
+				</ul>
+			{% endif %}
+		{% endif %}
+	{% endmacro %}
