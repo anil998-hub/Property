@@ -1,0 +1,6 @@
+uuid: 452f0159-0782-4ddb-aecc-b3d3e0170a0a
+langcode: en-gb
+status: true
+dependencies: {  }
+id: mobile_menu
+label: 'Mobile menu'

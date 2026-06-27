@@ -1,0 +1,8 @@
+uuid: 39c17149-5de6-44f0-83a2-9a4f4d3ad386
+langcode: en-gb
+status: true
+dependencies: {  }
+id: mobile-menu
+label: 'Mobile menu'
+description: ''
+locked: false

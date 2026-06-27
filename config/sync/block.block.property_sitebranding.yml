@@ -1,0 +1,23 @@
+uuid: dba48d7f-942a-48d1-b9f9-f3d5b023a6dd
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - property
+id: property_sitebranding
+theme: property
+region: mobile_menu
+weight: -17
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

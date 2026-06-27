@@ -1,0 +1,22 @@
+uuid: 9f520a0f-cb9f-4734-84a6-22d5859228cc
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - blockgroup.block_group_content.mobile_menu
+  module:
+    - blockgroup
+  theme:
+    - property
+id: property_mobilemenu_2
+theme: property
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_group:mobile_menu'
+settings:
+  id: 'block_group:mobile_menu'
+  label: 'Mobile menu'
+  label_display: visible
+  provider: blockgroup
+visibility: {  }
