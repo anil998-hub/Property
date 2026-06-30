@@ -121,9 +121,9 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
 #edit-subscriptions {
   display: none;
 }
- #edit-message {
+ /* #edit-message {
   display: none;
-} 
+}  */
 #edit-subscriptions-wrapper {
   display: none;
 }
