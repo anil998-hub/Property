@@ -115,10 +115,15 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
 #views-exposed-form-trading-block-1 {
   display: none;  
 }
-
-/* #edit-message {
+#edit-subscriptions--wrapper--description {
+   display: none;
+}
+#edit-subscriptions {
   display: none;
-} */
+}
+ #edit-message {
+  display: none;
+} 
 #edit-subscriptions-wrapper {
   display: none;
 }
@@ -758,20 +763,20 @@ body > #user-login-form:first-child:last-child {
 
 
 /* For consistent image sizing */
-.image-wrap {
+/* .image-wrap {
     position: relative;
     overflow: hidden;
     background: #f5f5f5;
     width: 100%;
     height: 250px; /* Fixed height */
-}
+} */
 
-.image-wrap img {
+/* .image-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-}
+} */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -842,3 +847,240 @@ body > #user-login-form:first-child:last-child {
 label[for="edit-mobile-number"] {
     display: none;
 } */
+
+
+
+select#edit-filter {
+    text-align: center;
+    font-size: larger;
+}
+
+
+
+.section-neighborhoods {
+
+  padding-top: 85px;
+}
+
+
+
+
+
+
+
+
+/* Card */
+   /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Property Card */
+        .box-house.style-list {
+            display: flex;
+            align-items: stretch;
+            background: #fff;
+            border: 1px solid #e9e9e9;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 280px; /* Fixed height for consistency */
+            margin-bottom: 30px;
+        }
+
+        /* Image */
+        .box-house.style-list .image-wrap {
+            width: 35%; /* Reduced from 42% */
+            min-width: 35%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .box-house.style-list .image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Content */
+        .box-house.style-list .content {
+            width: 65%;
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Tag */
+        .box-house.style-list .tag {
+            display: inline-block;
+            background: #f58634;
+            color: #fff;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        /* Title */
+        .box-house.style-list .title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .box-house.style-list .title a {
+            text-decoration: none;
+            color: #000;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* Show only 1 line */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Location */
+        .box-house.style-list .location {
+            color: #666;
+            font-size: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* Show only 1 line */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        /* Property info (beds, sqft) */
+        .box-house.style-list .meta-list {
+            display: flex;
+            gap: 30px;
+            border-bottom: 1px solid #ececec;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .box-house.style-list .meta-list .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .box-house.style-list .meta-list .item .icon {
+            font-weight: 700;
+            color: #f58634;
+        }
+
+        /* Bottom */
+        .box-house.style-list .bot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .box-house.style-list .price {
+            font-size: 32px;
+            color: #f58634;
+            font-weight: 700;
+        }
+
+        .box-house.style-list .price .currency {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .box-house.style-list .tf-btn {
+            min-width: 140px;
+            text-align: center;
+            padding: 10px 20px;
+            background: #f58634;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .box-house.style-list .tf-btn:hover {
+            background: #e07520;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .box-house.style-list {
+                flex-direction: column;
+                height: auto;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+
+            .box-house.style-list .image-wrap {
+                width: 100%;
+                min-width: 100%;
+                height: 220px;
+            }
+
+            .box-house.style-list .content {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .box-house.style-list .title {
+                font-size: 22px;
+            }
+
+            .box-house.style-list .price {
+                font-size: 28px;
+            }
+
+            .box-house.style-list .meta-list {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .box-house.style-list .tf-btn {
+                min-width: 120px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .box-house.style-list .title {
+                font-size: 18px;
+            }
+
+            .box-house.style-list .price {
+                font-size: 24px;
+            }
+
+            .box-house.style-list .meta-list .item {
+                font-size: 13px;
+            }
+
+            .box-house.style-list .tf-btn {
+                min-width: 100px;
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
