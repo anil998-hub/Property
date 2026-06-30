@@ -763,7 +763,7 @@ body > #user-login-form:first-child:last-child {
 
 
 /* For consistent image sizing */
-/* .image-wrap {
+.image-wrap {
     position: relative;
     overflow: hidden;
     background: #f5f5f5;
@@ -771,12 +771,12 @@ body > #user-login-form:first-child:last-child {
     height: 250px; /* Fixed height */
 } */
 
-/* .image-wrap img {
+.image-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-} */
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -877,12 +877,7 @@ select#edit-filter {
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-
+      
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -1084,3 +1079,22 @@ select#edit-filter {
                 font-size: 12px;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
