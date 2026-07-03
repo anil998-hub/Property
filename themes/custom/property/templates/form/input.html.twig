@@ -80,13 +80,11 @@
 {% set button_value = 'Contact our experts' %}
 
 <div class="send-wrap">
-  <button type="submit" 
+  <input type="submit" 
           class="{{ classes|join(' ') }}" 
           id="{{ id }}" 
           name="{{ element['#name']|default('name') }}"
           {% if element['#required'] %}required{% endif %}>
-    {{ button_value }}
-  </button>
 </div>
 
 {% elseif id == 'edit-submit-site-search' %} 

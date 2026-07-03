@@ -852,7 +852,7 @@ label[for="edit-mobile-number"] {
 
 select#edit-filter {
     text-align: center;
-    font-size: larger;
+    font-size: small;
 }
 
 
@@ -863,10 +863,56 @@ select#edit-filter {
 }
 
 
+.breadcrumb li:not(:last-child)::after {
+    content: "\f054"; /* Font Awesome chevron-right */
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Required for solid icons */
+    color: var(--Text);
+    font-size: 8px;
+    line-height: normal;
+    top: 5px;
+    margin: 0 12.5px 0 11.5px;
+}
+
+/* Style ALL submit buttons */
+input[type="submit"],
+.webform-button--submit,
+.button--primary,
+input[id^="edit-submit"] {
+    display: block !important;
+    width: 100% !important;
+    height: 64px !important;
+    border: none !important;
+    border-radius: 18px !important;
+    background: #F7933A !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    cursor: pointer;
+    transition: .3s;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+input[type="submit"]:hover,
+.webform-button--submit:hover,
+.button--primary:hover,
+input[id^="edit-submit"]:hover {
+    background: #e67d1f !important;
+}
 
 
 
-
+form label {
+    font-size: 16px !important;
+    line-height: 22.5px;
+    font-weight: 600;
+    color: var(--Heading);
+    margin-bottom: 12px;
+}
 
 
 /* Card */
