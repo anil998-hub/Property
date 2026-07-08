@@ -33,63 +33,72 @@
 #}
 
 
-
-				
-				
-						<div class="swiper-slide">
-							<div class="box-house hover-img ">
-								<div
-									class="image-wrap">
-									{# Get all image attributes #}
-									{% set raw_images = fields.field_image.content|render|striptags|trim %}
-									{# Create custom image tag #}
-									{# Get the raw URL from title field #}
-									{% set raw_title = fields.title.content %}
-									{% set title_url = raw_title|split('href="')|last|split('"')|first %}
+<div class="swiper-slide">
+	<div class="box-house hover-img ">
+		<div
+			class="image-wrap">
+			{# Get all image attributes #}
+			{% set raw_images = fields.field_image.content|render|striptags|trim %}
+			{# Create custom image tag #}
+			{# Get the raw URL from title field #}
+			{% set raw_title = fields.title.content %}{% set title_url = raw_title|split('href="')|last|split('"')|first %}
 
 
-									{# Or create your own link #}<a href="{{ title_url }}"> {{ fields.field_image.content }}</a>
-									<ul class="box-tag flex gap-8 ">
-										<li class="flat-tag text-4 bg-main fw-6 text_white">Featured</li>
-										<li class="flat-tag text-4 bg-3 fw-6 text_white">For Sale</li>
-									</ul>
-									<div class="list-btn flex gap-8 ">
-										<a href="#" class="btn-icon save hover-tooltip">
-											<i class="icon-save"></i>
-											<span class="tooltip">Add Favorite</span>
-										</a>
-										<a href="#" class="btn-icon find hover-tooltip">
-											<i class="icon-find-plus"></i>
-											<span class="tooltip">Quick View</span>
-										</a>
-									</div>
-								</div>
-								<div class="content">
-									<h5 class="title">
-										<a href="{{ title_url }}">{{ fields.title.content }}</a>
-									</h5>
-									<p class="location text-1 line-clamp-1 ">
-										<i class="icon-location"></i>
-										{{ fields.body.content|striptags }}</p>
-									<ul class="meta-list flex">
-										<li class="text-1 flex">
-											<span>{{ fields.field_beds.content }}</span>Beds</li>
-										<li class="text-1 flex">
-											<span>{{ fields.field_baths.content }}</span>Baths</li>
-										<li class="text-1 flex">
-											<span>{{ fields.field_sqft.content }}</span>Sqft</li>
-									</ul>
-									<div class="bot flex justify-between items-center">
-										<h5 class="price">{{ fields.field_money.content }}</h5>
-										<div class="wrap-btn flex">
-											{# <a href="#" class="compare flex gap-8 items-center text-1">
-												<i class="icon-compare"></i>Compare</a> #}
-											<a class="tf-btn style-border pd-4" href="{{ title_url }}">Details</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+			{# Or create your own link #}
+				<a href="{{ title_url }}"> {{ fields.field_image.content }}</a>
+			<ul class="box-tag flex gap-8 ">
+				<li class="flat-tag text-4 bg-main fw-6 text_white">Featured</li>
+				<li class="flat-tag text-4 bg-3 fw-6 text_white">For Sale</li>
+			</ul>
+			<div class="list-btn flex gap-8 ">
+				<a href="#" class="btn-icon save hover-tooltip">
+					<i class="icon-save"></i>
+					<span class="tooltip">Add Favorite</span>
+				</a>
+				<a href="#" class="btn-icon find hover-tooltip">
+					<i class="icon-find-plus"></i>
+					<span class="tooltip">Quick View</span>
+				</a>
+			</div>
+		</div>
+		<div class="content">
+			<h5 class="title">
+				<a href="{{ title_url }}">{{ fields.title.content }}</a>
+			</h5>
+			<p class="location text-1 line-clamp-1 ">
+				<i class="icon-location"></i>
+				{{ fields.body.content|striptags }}</p>
+			<ul class="meta-list flex">
+				{% if fields.field_beds.content is not empty %}
+					<li class="text-1 flex">
+						<span>{{ fields.field_beds.content }}</span>
+						Beds
+					</li>
+				{% endif %}
 
-				
-				
+				{% if fields.field_baths.content is not empty %}
+					<li class="text-1 flex">
+						<span>{{ fields.field_baths.content }}</span>
+						Baths
+					</li>
+				{% endif %}
+
+				{% if fields.field_sqft.content is not empty %}
+					<li class="text-1 flex">
+						<span>{{ fields.field_sqft.content }}</span>
+						Sqft
+					</li>
+				{% endif %}
+			</ul>
+			<div class="bot flex justify-between items-center">
+				<h5 class="price">{{ fields.field_money.content }}</h5>
+				<div
+					class="wrap-btn flex">
+					{# <a href="#" class="compare flex gap-8 items-center text-1">
+																	<i class="icon-compare"></i>Compare</a> #}
+					<a class="tf-btn style-border pd-4" href="{{ title_url }}">Details</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

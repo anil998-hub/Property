@@ -73,13 +73,24 @@
 										<i class="icon-location"></i>
 										{{ fields.body.content|render|striptags }}</p>
 									<ul class="meta-list flex">
-										<li class="text-1 flex">
-											<span>{{ fields.field_beds.content }}</span>Beds</li>
-										<li class="text-1 flex">
-											<span>{{ fields.field_baths.content }}</span>Baths</li>
-										<li class="text-1 flex">
-											<span>{{ fields.field_sqft.content }}</span>Sqft</li>
-									</ul>
+    {% if fields.field_beds.content is not empty %}
+    <li class="text-1 flex">
+        <span>{{ fields.field_beds.content }}</span> Beds
+    </li>
+    {% endif %}
+    
+    {% if fields.field_baths.content is not empty %}
+    <li class="text-1 flex">
+        <span>{{ fields.field_baths.content }}</span> Baths
+    </li>
+    {% endif %}
+    
+    {% if fields.field_sqft.content is not empty %}
+    <li class="text-1 flex">
+        <span>{{ fields.field_sqft.content }}</span> Sqft
+    </li>
+    {% endif %}
+</ul>
 									<div class="bot flex justify-between items-center">
 										<h5 class="price">{{ fields.field_money.content }}</h5>
 										<div class="wrap-btn flex">

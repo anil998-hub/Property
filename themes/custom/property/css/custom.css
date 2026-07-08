@@ -4,16 +4,16 @@ Source - https://stackoverflow.com/a/49046116
 Posted by MD JAHIRUL ISLAM
 Retrieved 2026-06-10, License - CC BY-SA 3.0
 */
-
+/* 
   @font-face {
   font-family: 'icomoon';
   src: url('icomoon.eot');
   src: url('icomoon.eot#iefix') format('embedded-opentype'), url('dilatefonts/icomoon.ttf') format('truetype'), url('icomoon.woff') format('woff'), url('icomoon.svg') format('svg');
   font-weight: normal;
   font-style: normal;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: 'icomoon';
   src: url('../fonts/icomoon.eot?xxxxxxxx');
   src: url('../fonts/icomoon.eot?xxxxxxxx#iefix') format('embedded-opentype'),
@@ -23,12 +23,12 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
   font-weight: normal;
   font-style: normal;
   font-display: block;
-}
+} */
 
 /* Then use the font */
-.my-icon {
+/* .my-icon {
   font-family: 'icomoon' !important;
-}
+} */
 /* Your navigation style */
 .navigation li.has-child {
     position: relative;
@@ -112,6 +112,8 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
 #views-exposed-form-property-block-1 {
     display: none;
 }
+
+
 #views-exposed-form-trading-block-1 {
   display: none;  
 }
@@ -406,15 +408,15 @@ width: 630px;
 }
 
 /* Alternative: If you're using actual image icons */
-.icon-star.filled {
+/* .icon-star.filled {
   background-image: url('star-filled.png');
   /* or color: gold; */
-}
+/* } */ */
 
-.icon-star.empty {
+/* .icon-star.empty {
   background-image: url('star-empty.png');
   /* or color: lightgray; */
-}
+/* } */ */
 
 
 .webform-button--submit
@@ -1038,7 +1040,7 @@ form label {
         }
 
         .box-house.style-list .price {
-            font-size: 32px;
+            font-size: 18px;
             color: #f58634;
             font-weight: 700;
         }
@@ -1271,4 +1273,243 @@ form label {
         bottom:15px;
     }
 
+}
+
+/* ============================================
+   IMAGE WRAPPER & CONTAINER STYLES
+   ============================================ */
+
+/* Container that holds the image */
+.allsearch .image-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Image itself */
+.allsearch .image-wrap img.article-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* ============================================
+   RESPONSIVE IMAGE SIZES
+   ============================================ */
+
+/* 
+   DESKTOP - Large screens (1200px and above)
+   Height: 320px - Good for large property images
+*/
+@media screen and (min-width: 1200px) {
+  .allsearch .image-wrap img.article-image {
+    height: 320px;
+  }
+}
+
+/* 
+   DESKTOP - Medium screens (992px - 1199px)
+   Height: 280px - Slightly smaller for medium desktops
+*/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .allsearch .image-wrap img.article-image {
+    height: 280px;
+  }
+}
+
+/* 
+   TABLET - Landscape (768px - 991px)
+   Height: 240px - Good for tablet landscape
+*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .allsearch .image-wrap img.article-image {
+    height: 240px;
+  }
+}
+
+/* 
+   TABLET - Portrait (576px - 767px)
+   Height: 200px - Good for tablet portrait
+*/
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .allsearch .image-wrap img.article-image {
+    height: 200px;
+  }
+}
+
+/* 
+   MOBILE - Large (480px - 575px)
+   Height: 180px - Good for large phones
+*/
+@media screen and (min-width: 480px) and (max-width: 575px) {
+  .allsearch .image-wrap img.article-image {
+    height: 180px;
+  }
+}
+
+/* 
+   MOBILE - Small (below 480px)
+   Height: 160px - Good for small phones
+*/
+@media screen and (max-width: 479px) {
+  .allsearch .image-wrap img.article-image {
+    height: 160px;
+  }
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+
+.allsearch .image-wrap:hover img.article-image {
+  transform: scale(1.08);
+}
+
+/* ============================================
+   FALLBACK FOR OLDER BROWSERS
+   ============================================ */
+
+.allsearch .image-wrap img.article-image {
+  /* Fallback height if media queries don't work */
+  height: 280px;
+}
+
+/* ============================================
+   IMAGE LOADING PLACEHOLDER
+   ============================================ */
+
+.allsearch .image-wrap img.article-image {
+  background: #e8e8e8;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE WITH SWIPER SPECIFIC
+   ============================================ */
+
+/* Desktop Swiper */
+.swiper .allsearch .image-wrap img.article-image {
+  height: 300px;
+}
+
+@media screen and (max-width: 991px) {
+  .swiper .allsearch .image-wrap img.article-image {
+    height: 240px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .swiper .allsearch .image-wrap img.article-image {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .swiper .allsearch .image-wrap img.article-image {
+    height: 170px;
+  }
+}
+
+/* ============================================
+   OPTIMIZED VERSION (MINIMAL CSS)
+   ============================================ */
+
+/* 
+   Use this if you want cleaner code
+   Just set height for 3 breakpoints
+*/
+
+.image-wrap img.article-image {
+  width: 100%;
+  height: 280px; /* Default */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 991px) {
+  .image-wrap img.article-image {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .image-wrap img.article-image {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .image-wrap img.article-image {
+    height: 150px;
+  }
+}
+
+.image-wrap:hover img.article-image {
+  transform: scale(1.05);
+}
+
+h2#related-properties-title {
+    margin-bottom: 23px;
+}
+
+
+
+/* Force all images in search-test to have fixed size */
+.search-test .field--name-field-image img {
+  width: 100% !important;
+  height: 280px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+/* Override the image-style-wide class */
+.search-test .image-style-wide {
+  width: 100% !important;
+  height: 280px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Remove inline width/height */
+.search-test .field--name-field-image img[width],
+.search-test .field--name-field-image img[height] {
+  width: 100% !important;
+  height: 280px !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .search-test .field--name-field-image img,
+  .search-test .image-style-wide {
+    height: 240px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-test .field--name-field-image img,
+  .search-test .image-style-wide {
+    height: 200px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search-test .field--name-field-image img,
+  .search-test .image-style-wide {
+    height: 170px !important;
+  }
 }

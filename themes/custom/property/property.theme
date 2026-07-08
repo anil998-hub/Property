@@ -142,6 +142,19 @@ function property_preprocess_node(&$variables) {
       '#entity_id' => $node->id(),
     ];
   }
+
+  if ($node->getType() == 'luxury_listings') {
+    // Get related properties
+    $related_properties = property_get_related_properties($node, 6);
+    
+    if (!empty($related_properties)) {
+      $variables['related_properties'] = $related_properties;
+      $variables['has_related_properties'] = TRUE;
+    } else {
+      $variables['related_properties'] = [];
+      $variables['has_related_properties'] = FALSE;
+    }
+  }
 }
 
 /**
@@ -242,3 +255,234 @@ function property_theme_suggestions_form_alter(array &$suggestions, array $varia
 
 
 
+
+
+// /**
+//  * Helper function to get related properties.
+//  */
+// function property_preprocess_node(&$variables) {
+//   $node = $variables['node'];
+  
+//   if ($node->getType() == 'luxury_listings') {
+//     $variables['contact_form'] = [
+//       '#type' => 'webform',
+//       '#webform' => 'property_contact_form',
+//       '#ajax' => [
+//         'callback' => 'property_webform_ajax_callback',
+//         'wrapper' => 'webform-wrapper',
+//         'method' => 'replace',
+//         'effect' => 'fade',
+//       ],
+//       '#default_data' => [
+//         'property_nid' => $node->id(),
+//         'property_title' => $node->label(),
+//       ],
+//       '#entity_type' => 'node',
+//       '#entity_id' => $node->id(),
+//     ];
+//   }
+
+//   if ($node->getType() == 'luxury_listings') {
+//     // Get related properties
+//     $related_properties = property_get_related_properties($node, 6);
+    
+//     if (!empty($related_properties)) {
+//       $variables['related_properties'] = $related_properties;
+//       $variables['has_related_properties'] = TRUE;
+//     } else {
+//       $variables['related_properties'] = [];
+//       $variables['has_related_properties'] = FALSE;
+//     }
+//   }
+// }
+
+// /**
+//  * Helper function to get related properties.
+//  */
+// function property_get_related_properties($node, $limit = 6) {
+//   // Get taxonomy terms
+//   $terms = $node->get('field_properties')->referencedEntities();
+//   if (empty($terms)) {
+//     return [];
+//   }
+  
+//   $term_ids = array_map(function($term) {
+//     return $term->id();
+//   }, $terms);
+  
+//   // Query for related nodes - FIXED with accessCheck()
+//   $query = \Drupal::entityQuery('node')
+//     ->accessCheck(TRUE)  // <-- ADD THIS LINE
+//     ->condition('type', 'luxury_listings')
+//     ->condition('status', 1)
+//     ->condition('nid', $node->id(), '!=')
+//     ->condition('field_properties', $term_ids, 'IN')
+//     ->sort('created', 'DESC')
+//     ->range(0, $limit);
+  
+//   $nids = $query->execute();
+  
+//   if (empty($nids)) {
+//     return [];
+//   }
+  
+//   // Load and prepare nodes
+//   $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+//   $prepared_nodes = [];
+  
+//   foreach ($nodes as $related_node) {
+//     $prepared_nodes[] = [
+//       'id' => $related_node->id(),
+//       'title' => $related_node->label(),
+//       'url' => $related_node->toUrl()->toString(),
+//       'node' => $related_node,
+//       // Add other fields as needed
+//     ];
+//   }
+  
+//   return $prepared_nodes;
+// }
+
+
+
+/**
+ * Helper function to get related properties with all fields.
+ */
+function property_get_related_properties($node, $limit = 6) {
+  $terms = $node->get('field_properties')->referencedEntities();
+  if (empty($terms)) {
+    return [];
+  }
+  
+  $term_ids = array_map(function($term) {
+    return $term->id();
+  }, $terms);
+  
+  $query = \Drupal::entityQuery('node')
+    ->accessCheck(TRUE)
+    ->condition('type', 'luxury_listings')
+    ->condition('status', 1)
+    ->condition('nid', $node->id(), '!=')
+    ->condition('field_properties', $term_ids, 'IN')
+    ->sort('created', 'DESC')
+    ->range(0, $limit);
+  
+  $nids = $query->execute();
+  
+  if (empty($nids)) {
+    return [];
+  }
+   // Get services INSIDE the function
+  $file_url_generator = \Drupal::service('file_url_generator');
+  $image_style_storage = \Drupal::entityTypeManager()->getStorage('image_style');
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+  $prepared_nodes = [];
+  
+  foreach ($nodes as $related_node) {
+    // Prepare all fields in an array
+    $prepared_node = [
+      'id' => $related_node->id(),
+      'title' => $related_node->label(),
+      'url' => $related_node->toUrl()->toString(),
+      'node' => $related_node,
+      // Basic fields
+      'created' => $related_node->created->value,
+      'created_formatted' => \Drupal::service('date.formatter')->format($related_node->created->value, 'custom', 'M d, Y'),
+      'changed' => $related_node->changed->value,
+      'status' => $related_node->isPublished(),
+      'author' => $related_node->getOwner()->label(),
+      'author_id' => $related_node->getOwnerId(),
+    ];
+    
+    // Body field
+    if ($related_node->hasField('body') && !$related_node->get('body')->isEmpty()) {
+      $body = $related_node->get('body')->first();
+      $prepared_node['body'] = [
+        'value' => $body->get('value')->getValue(),
+        'summary' => $body->get('summary')->getValue(),
+        'processed' => $body->get('processed')->getValue(),
+        'format' => $body->get('format')->getValue(),
+      ];
+    }
+    
+    // Field: Money/Price
+    if ($related_node->hasField('field_money') && !$related_node->get('field_money')->isEmpty()) {
+      $prepared_node['money'] = $related_node->get('field_money')->first()->getValue();
+    }
+    
+    // Field: Beds
+    if ($related_node->hasField('field_beds') && !$related_node->get('field_beds')->isEmpty()) {
+      $prepared_node['beds'] = $related_node->get('field_beds')->first()->getValue();
+    }
+    
+    // Field: Baths
+    if ($related_node->hasField('field_baths') && !$related_node->get('field_baths')->isEmpty()) {
+      $prepared_node['baths'] = $related_node->get('field_baths')->first()->getValue();
+    }
+    
+    // Field: Sq Ft
+    if ($related_node->hasField('field_sqft') && !$related_node->get('field_sqft')->isEmpty()) {
+      $prepared_node['sqft'] = $related_node->get('field_sqft')->first()->getValue();
+    }
+    
+    // Field: Properties (Taxonomy)
+    if ($related_node->hasField('field_properties') && !$related_node->get('field_properties')->isEmpty()) {
+      $property_terms = $related_node->get('field_properties')->referencedEntities();
+      $prepared_node['properties'] = [];
+      foreach ($property_terms as $term) {
+        $prepared_node['properties'][] = [
+          'id' => $term->id(),
+          'label' => $term->label(),
+          'url' => $term->toUrl()->toString(),
+        ];
+      }
+    }
+    
+    // Field: Category (Taxonomy)
+    if ($related_node->hasField('field_category') && !$related_node->get('field_category')->isEmpty()) {
+      $category = $related_node->get('field_category')->first()->get('entity')->getTarget()->getValue();
+      if ($category) {
+        $prepared_node['category'] = [
+          'id' => $category->id(),
+          'label' => $category->label(),
+          'url' => $category->toUrl()->toString(),
+        ];
+      }
+    }
+    
+    // Field: Image
+     if ($related_node->hasField('field_image') && !$related_node->get('field_image')->isEmpty()) {
+      $image = $related_node->get('field_image')->first();
+      if ($image) {
+        $image_entity = $image->get('entity')->getTarget()->getValue();
+        if ($image_entity) {
+          $file_uri = $image_entity->getFileUri();
+          
+          // Basic image info
+          $image_data = [
+            'uri' => $file_uri,
+            'url' => $file_url_generator->generateAbsoluteString($file_uri),
+            'relative_url' => $file_url_generator->generateString($file_uri),
+            'alt' => $image->get('alt')->getValue(),
+            'title' => $image->get('title')->getValue(),
+            
+          ];
+          
+          // Add image styles
+          $image_style = $image_style_storage->load('thumbnail', 'medium', 'large', 'property_thumbnail', 'property_medium');
+          if ($image_style) {
+            $styled_url = $image_style->buildUrl($file_uri);
+            $image_data['styled_url'] = $file_url_generator->generateAbsoluteString($styled_url);
+            $image_data['styled_relative_url'] = $file_url_generator->generateString($styled_url);
+          }
+          
+          $prepared_node['image'] = $image_data;
+        }
+      }
+    }
+    
+    $prepared_nodes[] = $prepared_node;
+  }
+  
+  return $prepared_nodes;
+}

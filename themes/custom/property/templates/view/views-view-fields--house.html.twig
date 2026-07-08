@@ -36,23 +36,22 @@
 {# Get the raw URL from title field #}
 {% set raw_title = fields.title.content %}
 {% set title_url = raw_title|split('href="')|last|split('"')|first %}
-<div class="swiper-slide">
-	<div class="box-house hover-img style-list">
+	<div class="swiper-slide"> <div class="box-house hover-img style-list">
 		<div class="image-wrap">
 			<a href="{{ title_url }}">{{ fields.field_image.content }}</a>
 			<ul class="box-tag flex gap-8">
 				<li class="flat-tag text-4 bg-main fw-6 text_white">{{ fields.field_trade.content }}</li>
 			</ul>
 			{# <div class="list-btn flex gap-8">
-				<a href="#" class="btn-icon save hover-tooltip">
-					<i class="icon-save"></i>
-					<span class="tooltip">Add Favorite</span>
-				</a>
-				<a href="#" class="btn-icon find hover-tooltip">
-					<i class="icon-find-plus"></i>
-					<span class="tooltip">Quick View</span>
-				</a>
-			</div> #}
+							<a href="#" class="btn-icon save hover-tooltip">
+								<i class="icon-save"></i>
+								<span class="tooltip">Add Favorite</span>
+							</a>
+							<a href="#" class="btn-icon find hover-tooltip">
+								<i class="icon-find-plus"></i>
+								<span class="tooltip">Quick View</span>
+							</a>
+						</div> #}
 		</div>
 		<div class="content">
 			<h5 class="title">
@@ -60,22 +59,31 @@
 			</h5>
 			{{ fields.body.content }}
 			<ul class="meta-list flex">
+
 				<li class="meta-item">
-					<div class="text-9 flex">
-						<i class="icon-bed"></i>Beds<span>{{ fields.field_beds.content }}</span>
-					</div>
-					<div class="text-9 flex">
-						<i class="icon-sqft"></i>Sqft<span>{{ fields.field_sqft.content }}</span>
-					</div>
+					{% if fields.field_beds.content is not empty %}
+						<div class="text-9 flex">
+							<i class="icon-bed"></i>Beds<span>{{ fields.field_beds.content }}</span>
+						</div>
+					{% endif %}
+					{% if fields.field_sqft.content is not empty %}
+						<div class="text-9 flex">
+							<i class="icon-sqft"></i>Sqft<span>{{ fields.field_sqft.content }}</span>
+						</div>
+					{% endif %}
 				</li>
-              
+
 				<li class="meta-item">
-					<div class="text-9 flex">
-						<i class="icon-bath"></i>Baths<span>{{ fields.field_baths.content }}</span>
-					</div>
-					<div class="text-9 flex">
-						<i class="icon-garage"></i>Garage<span>{{ fields.field_list.content }}</span>
-					</div>
+					{% if fields.field_baths.content is not empty %}
+						<div class="text-9 flex">
+							<i class="icon-bath"></i>Baths<span>{{ fields.field_baths.content }}</span>
+						</div>
+					{% endif %}
+					{% if fields.field_list.content is not empty %}
+						<div class="text-9 flex">
+							<i class="icon-garage"></i>Garage<span>{{ fields.field_list.content }}</span>
+						</div>
+					{% endif %}
 				</li>
 			</ul>
 			<div class="bot flex justify-between items-center">
@@ -87,8 +95,3 @@
 		</div>
 	</div>
 </div>
-	
-
-
-
-

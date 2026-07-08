@@ -127,15 +127,17 @@
 							{{ body|render|striptags }}</p>
 						<ul class="meta-list flex">
 							{% set beds = row.content['#row']._entity.get('field_beds').value %}
+							{% if beds is not empty %}
 							<li class="text-1 flex">
-								<span>{{ beds }}</span>Beds</li>
-							{% set body = row.content['#row']._entity.get('body').value %}
-							<li class="text-1 flex">
-								{% set baths = row.content['#row']._entity.get('field_baths').value %}
-								<span>{{ baths }}</span>Baths</li>
+								<span>{{ beds }}</span>Beds</li>{% endif %}
+							{% set baths = row.content['#row']._entity.get('field_baths').value %}
+							{% if baths is not empty %}
+							<li class="text-1 flex">								
+								<span>{{ baths }}</span>Baths</li> {% endif %}
 							{% set sqft = row.content['#row']._entity.get('field_sqft').value %}
+							{% if sqft is not empty %}
 							<li class="text-1 flex">
-								<span>{{ sqft }}</span>Sqft</li>
+								<span>{{ sqft }}</span>Sqft</li> {% endif %}
 						</ul>
 						<div class="bot flex justify-between items-center">
 							{% set money = row.content['#row']._entity.get('field_money').value %}

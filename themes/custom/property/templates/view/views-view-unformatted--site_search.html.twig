@@ -61,6 +61,7 @@
 					<p class="text-1 split-text split-lines-transform">Thousands of luxury home enthusiasts just like you visit our website.</p>
 				</div>
 				<div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767 mobile-search" data-screen="767" data-preview="1" data-space="15">
+					{# <div class="allsearch"> #}
 					<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
 						{% for row in rows %}
 							{# Get the node entity #}
@@ -122,12 +123,16 @@
 											<i class="icon-location"></i>
 											{{ body|render|striptags }}</p>
 										<ul class="meta-list flex">
+										{% if beds is not empty %}
 											<li class="text-1 flex">
 												<span>{{ beds }}</span>Beds</li>
+												{% endif %}
+													{% if baths is not empty %}
 											<li class="text-1 flex">
-												<span>{{ baths }}</span>Baths</li>
+												<span>{{ baths }}</span>Baths</li>{% endif %}
+													{% if sqft is not empty %}
 											<li class="text-1 flex">
-												<span>{{ sqft }}</span>Sqft</li>
+												<span>{{ sqft }}</span>Sqft</li>	{% endif %}
 										</ul>
 										<div class="bot flex justify-between items-center">
 											<h5 class="price">{{ money }}</h5>
@@ -150,6 +155,7 @@
 
 							{# {{- row.content -}} #}
 						{% endfor %}
+					{# </div> #}
 					</div>
 					<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
 				</div>
