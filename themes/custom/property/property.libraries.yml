@@ -2,6 +2,7 @@ global-styling:
   version: 1.x
   css:
     theme:
+      https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css: {}
       https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css: {}
       https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css: {}
       https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css : {}
@@ -13,7 +14,7 @@ global-styling:
       css/custom.css: {}
       
   js:
-     https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css: {}
+     
      https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js: {}
      js/custom.js: {}
      https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js: {}
@@ -53,3 +54,4 @@ global-styling:
     - core/drupal.ajax  # ADD THIS for Infinite Scroll
     - core/drupalSettings  # ADD THIS for AJAX
     - views/views.ajax  # ADD THIS for Views AJAX
+    - core/drupal.once

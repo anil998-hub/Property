@@ -1,4 +1,4 @@
-uuid: e923cbe2-1a43-4671-b670-7e28576c987b
+uuid: 6e0aade9-fe03-4b07-b27d-aab00aec9996
 langcode: en-gb
 status: true
 dependencies:
@@ -6,28 +6,30 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_baths
     - field.storage.node.field_beds
+    - field.storage.node.field_city
+    - field.storage.node.field_flats
     - field.storage.node.field_image
-    - field.storage.node.field_money
+    - field.storage.node.field_list
     - field.storage.node.field_properties
+    - field.storage.node.field_rooms
     - field.storage.node.field_sqft
+    - field.storage.node.field_trade
     - image.style.webp_no_class
     - node.type.luxury_listings
     - taxonomy.vocabulary.property
   content:
     - 'taxonomy_term:property:05d7726e-139b-4af8-8d08-3ff79be4806f'
-    - 'taxonomy_term:property:7bbb60a1-9e76-4cda-a800-0332edd697a8'
-    - 'taxonomy_term:property:98b41eb2-7d7a-4eec-8d9b-3274f08f6ca1'
     - 'taxonomy_term:property:9e08aef4-c7bd-4ae5-be2b-c09a6ebe2320'
-    - 'taxonomy_term:property:a1dd3dc8-d78a-4876-a301-b3ac32f2ca20'
-    - 'taxonomy_term:property:d5e0fb06-c7ca-41e6-b240-81c4cf88ef96'
   module:
     - image
     - node
+    - options
     - taxonomy
     - text
     - user
-id: property
-label: Property
+    - views_infinite_scroll
+id: property_details
+label: 'Property Details'
 module: views
 description: ''
 tag: ''
@@ -40,7 +42,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Property
+      title: 'Property Details'
       fields:
         title:
           id: title
@@ -293,10 +295,136 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_money:
-          id: field_money
-          table: node__field_money
-          field: field_money
+        field_city:
+          id: field_city
+          table: node__field_city
+          field: field_city
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_flats:
+          id: field_flats
+          table: node__field_flats
+          field: field_flats
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_list:
+          id: field_list
+          table: node__field_list
+          field: field_list
           relationship: none
           group_type: group
           admin_label: ''
@@ -343,10 +471,75 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
+          type: list_default
+          settings: {  }
           group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_image:
+          id: field_image
+          table: node__field_image
+          field: field_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: webp_no_class
+            image_loading:
+              attribute: lazy
+          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -419,6 +612,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_rooms:
+          id: field_rooms
+          table: node__field_rooms
+          field: field_rooms
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_sqft:
           id: field_sqft
           table: node__field_sqft
@@ -482,10 +738,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_image:
-          id: field_image
-          table: node__field_image
-          field: field_image
+        field_trade:
+          id: field_trade
+          table: node__field_trade
+          field: field_trade
           relationship: none
           group_type: group
           admin_label: ''
@@ -532,13 +788,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: image
+          type: entity_reference_label
           settings:
-            image_link: ''
-            image_style: webp_no_class
-            image_loading:
-              attribute: lazy
-          group_column: entity_id
+            link: true
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -549,10 +802,28 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: some
+        type: infinite_scroll
         options:
           offset: 0
-          items_per_page: 21
+          pagination_heading_level: h4
+          items_per_page: 6
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+            initially_load_all_pages: false
       exposed_form:
         type: basic
         options:
@@ -620,17 +891,12 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            1: 1
-            6: 6
-            4: 4
-            3: 3
-            5: 5
             2: 2
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: field_properties_target_id_op
-            label: ''
+            label: 'Properties (field_properties)'
             description: ''
             use_operator: false
             operator: field_properties_target_id_op
@@ -677,22 +943,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      use_ajax: true
-      group_by: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: '<div class="heading-section text-center mb-48"><h2 class="title split-text effect-right"><span class="wow charsAnimIn words chars splitting animated" aria-hidden="true" style="--word-total: 3; --char-total: 17; visibility: visible;"><span class="word" data-word="Grow" style="--word-index: 0;"><span class="char" data-char="G" style="--char-index: 0;">T</span><span class="char" data-char="G" style="--char-index: 1;">r</span><span class="char" data-char="G" style="--char-index: 2;">y</span></span><span class="whitespace"> </span><span class="word" data-word="Grow" style="--word-index: 1;"><span class="char" data-char="G" style="--char-index: 1;">S</span><span class="char" data-char="G" style="--char-index: 2;">e</span><span class="char" data-char="G" style="--char-index: 3;">a</span><span class="char" data-char="G" style="--char-index: 4;">r</span><span class="char" data-char="G" style="--char-index: 5;">c</span><span class="char" data-char="G" style="--char-index: 6;">h</span><span class="char" data-char="G" style="--char-index: 7;">i</span><span class="char" data-char="G" style="--char-index: 8;">n</span><span class="char" data-char="G" style="--char-index: 9;">g</span></span><span class="whitespace"> </span><span class="word" data-word="Grow" style="--word-index: 2;"><span class="char" data-char="G" style="--char-index: 2;">F</span><span class="char" data-char="G" style="--char-index: 3;">o</span><span class="char" data-char="G" style="--char-index: 4;">r</span></span><span class="whitespace"> </span></span></h2><p class="text-1 split-text split-lines-transform">Thousands of luxury home enthusiasts just like you have found their dream home</p></div>'
-            format: full_html
-          tokenize: false
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -700,24 +951,27 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_baths'
         - 'config:field.storage.node.field_beds'
+        - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_flats'
         - 'config:field.storage.node.field_image'
-        - 'config:field.storage.node.field_money'
+        - 'config:field.storage.node.field_list'
         - 'config:field.storage.node.field_properties'
+        - 'config:field.storage.node.field_rooms'
         - 'config:field.storage.node.field_sqft'
+        - 'config:field.storage.node.field_trade'
   block_1:
     id: block_1
-    display_title: block
+    display_title: Block
     display_plugin: block
     position: 1
     display_options:
-      title: Property
       filters:
         status:
           id: status
@@ -751,10 +1005,10 @@ display:
           value:
             1: 1
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: field_properties_target_id_op
-            label: ''
+            label: 'Properties (field_properties)'
             description: ''
             use_operator: false
             operator: field_properties_target_id_op
@@ -793,7 +1047,144 @@ display:
         groups:
           1: AND
       defaults:
-        title: false
+        filters: false
+        filter_groups: false
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_baths'
+        - 'config:field.storage.node.field_beds'
+        - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_flats'
+        - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_list'
+        - 'config:field.storage.node.field_properties'
+        - 'config:field.storage.node.field_rooms'
+        - 'config:field.storage.node.field_sqft'
+        - 'config:field.storage.node.field_trade'
+  block_2:
+    id: block_2
+    display_title: Plots
+    display_plugin: block
+    position: 2
+    display_options:
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_baths'
+        - 'config:field.storage.node.field_beds'
+        - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_flats'
+        - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_list'
+        - 'config:field.storage.node.field_properties'
+        - 'config:field.storage.node.field_rooms'
+        - 'config:field.storage.node.field_sqft'
+        - 'config:field.storage.node.field_trade'
+  block_3:
+    id: block_3
+    display_title: Villa
+    display_plugin: block
+    position: 3
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            luxury_listings: luxury_listings
+        field_properties_target_id:
+          id: field_properties_target_id
+          table: node__field_properties
+          field: field_properties_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            2: 2
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_properties_target_id_op
+            label: 'Properties (field_properties)'
+            description: ''
+            use_operator: false
+            operator: field_properties_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_properties_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: property
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
         filters: false
         filter_groups: false
       display_description: ''
@@ -801,21 +1192,23 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      allow:
-        items_per_page: false
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_baths'
         - 'config:field.storage.node.field_beds'
+        - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_flats'
         - 'config:field.storage.node.field_image'
-        - 'config:field.storage.node.field_money'
+        - 'config:field.storage.node.field_list'
         - 'config:field.storage.node.field_properties'
+        - 'config:field.storage.node.field_rooms'
         - 'config:field.storage.node.field_sqft'
+        - 'config:field.storage.node.field_trade'

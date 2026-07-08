@@ -1,0 +1,24 @@
+uuid: 2df75546-e8fd-44d1-8103-0cebb569dc08
+langcode: en-gb
+status: true
+dependencies: {  }
+id: G-ZYRX1BLLDL.6a3fb63f902755.98084423
+label: G-ZYRX1BLLDL
+weight: 0
+tag_container_ids:
+  - G-ZYRX1BLLDL
+advanced_settings:
+  consent_mode: false
+dimensions_metrics: {  }
+conditions: {  }
+events:
+  custom: {  }
+  generate_lead:
+    value: ''
+    currency: ''
+  login:
+    method: CMS
+  search: {  }
+  sign_up:
+    method: CMS
+  webform_purchase: {  }

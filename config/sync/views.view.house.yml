@@ -11,6 +11,7 @@ dependencies:
     - field.storage.node.field_money
     - field.storage.node.field_sqft
     - field.storage.node.field_trade
+    - image.style.webp_no_class
     - node.type.luxury_listings
     - taxonomy.vocabulary.trade
   content:
@@ -401,9 +402,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: image_url
+          type: image
           settings:
-            image_style: ''
+            image_link: ''
+            image_style: webp_no_class
+            image_loading:
+              attribute: lazy
           group_column: ''
           group_columns: {  }
           group_rows: true

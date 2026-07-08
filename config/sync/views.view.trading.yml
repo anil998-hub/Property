@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_deatils
     - field.storage.node.field_image
+    - image.style.webp_no_class
     - node.type.trading
     - taxonomy.vocabulary.trading
   content:
@@ -275,9 +276,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: image_url
+          type: image
           settings:
-            image_style: ''
+            image_link: ''
+            image_style: webp_no_class
+            image_loading:
+              attribute: lazy
           group_column: ''
           group_columns: {  }
           group_rows: true

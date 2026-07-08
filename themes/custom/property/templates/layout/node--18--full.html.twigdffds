@@ -1,0 +1,1 @@
+{{ drupal_view('property_location', 'block_1') }}

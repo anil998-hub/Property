@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.luxury_listings.field_city_image
     - field.field.node.luxury_listings.field_deatils
     - field.field.node.luxury_listings.field_description
+    - field.field.node.luxury_listings.field_flats
     - field.field.node.luxury_listings.field_image
     - field.field.node.luxury_listings.field_list
     - field.field.node.luxury_listings.field_metatag
@@ -63,6 +64,7 @@ hidden:
   field_city_image: true
   field_deatils: true
   field_description: true
+  field_flats: true
   field_list: true
   field_metatag: true
   field_money: true
