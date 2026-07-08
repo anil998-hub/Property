@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									</li>
 								{% endif %}
 
-								{% set baths = node.field_baths.value|trim %}
+								{% set baths = node.field_baths.value|render|striptags|trim %}
 								{% if baths is not empty %}
 									<li class="text-1 flex">
 										<span>{{ baths }}</span>
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									</div>
 								</div>
 							{% endif %}
-							{% set bathrooms = node.field_baths.value|trim %}
+							{% set bathrooms = node.field_baths.value|render|striptags|trim %}
 							{% if bathrooms is not empty %}
 								<div class="box-icon">
 									<div class="icons">
@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									</div>
 									<div class="content">
 										<div class="text-4 text-color-default">Bathrooms:</div>
-										<div class="text-1 text-color-heading">{{ node.field_baths.value|trim }}Rooms</div>
+										<div class="text-1 text-color-heading">{{ bathrooms }}Rooms</div>
 									</div>
 								</div>
 							{% endif %}
@@ -462,20 +462,20 @@ document.addEventListener('DOMContentLoaded', function() {
 									</div>
 									<div class="content">
 										<div class="text-4 text-color-default">Bedrooms:</div>
-										<div class="text-1 text-color-heading">{{ node.field_beds.value|render|striptags|trim }}
+										<div class="text-1 text-color-heading">{{ beds }}
 											Rooms</div>
 									</div>
 								</div>
 							{% endif %}
 							{% set bathrooms = node.field_sqft.value|render|striptags|trim %}
-							{% if field_sqft is not empty %}
+							{% if bathrooms is not empty %}
 								<div class="box-icon">
 									<div class="icons">
 										<i class="icon-Ruler"></i>
 									</div>
 									<div class="content">
 										<div class="text-4 text-color-default">Size:</div>
-										<div class="text-1 text-color-heading">{{ node.field_sqft.value|render|striptags|trim }}
+										<div class="text-1 text-color-heading">{{ bathrooms }}
 											SqFt</div>
 									</div>
 								</div>
