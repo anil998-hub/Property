@@ -61,7 +61,7 @@
 					<p class="text-1 split-text split-lines-transform">Thousands of luxury home enthusiasts just like you visit our website.</p>
 				</div>
 				<div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767 mobile-search" data-screen="767" data-preview="1" data-space="15">
-					{# <div class="allsearch"> #}
+					
 					<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 ">
 						{% for row in rows %}
 							{# Get the node entity #}
@@ -73,7 +73,7 @@
 							{% set body = node.body.value %}
 							{% set money = node.field_money.value %}
 							{% set beds = node.field_beds.value %}
-							{% set baths = node.field_baths.value|trim %}
+							{% set baths = node.field_baths.value %}
 							{% set sqft = node.field_sqft.value %}
 
 							{# For formatted fields (like text with summary) #}
@@ -93,6 +93,7 @@
 							{# <div dir="ltr" class="swiper style-pagination tf-sw-mobile-1 sw-swiper-767" data-screen="767" data-preview="1" data-space="15">
 																				<div class="swiper-wrapper tf-layout-mobile-md md-col-2  lg-col-3 "> #}
 								<div class="swiper-slide"> <div class="box-house hover-img ">
+									<div class="allsearch">
 									<div
 										class="image-wrap">
 
@@ -114,6 +115,7 @@
 												<span class="tooltip">Quick View</span>
 											</a>
 										</div>
+									</div>
 									</div>
 									<div class="content">
 										<h5 class="title">
@@ -155,8 +157,8 @@
 
 							{# {{- row.content -}} #}
 						{% endfor %}
-					{# </div> #}
 					</div>
+					
 					<div class="sw-pagination sw-pagination-mb-1 text-center d-lg-none d-block"></div>
 				</div>
 
