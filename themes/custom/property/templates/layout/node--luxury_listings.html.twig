@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
 											<div class="bot flex justify-between items-center">
 												{% if item.money is defined and item.money.value is defined %}
 													<h5 class="price">
-														₹{{ item.money.value|number_format }}
+														₹{{ item.money.value }}
 													</h5>
 												{% endif %}
 
