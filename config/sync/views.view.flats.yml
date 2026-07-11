@@ -870,7 +870,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            17: 17
+            15: 15
           group: 1
           exposed: false
           expose:
@@ -1077,7 +1077,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            15: 15
+            17: 17
           group: 1
           exposed: false
           expose:

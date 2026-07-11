@@ -1,0 +1,26 @@
+uuid: 96efb42c-3d5b-45d8-a6eb-1c335aaeb916
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - filter.format.full_html
+    - node.type.faq
+  module:
+    - text
+id: node.faq.field_description
+field_name: field_description
+entity_type: node
+bundle: faq
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

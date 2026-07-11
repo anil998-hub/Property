@@ -1,0 +1,34 @@
+uuid: f81884cd-48c0-4519-9a39-6a36fc526a03
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_us
+    - node.type.luxury_listings
+    - paragraphs.paragraphs_type.faq
+  module:
+    - entity_reference_revisions
+id: node.luxury_listings.field_contact_us
+field_name: field_contact_us
+entity_type: node
+bundle: luxury_listings
+label: FAQ
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      faq: faq
+    negate: 0
+    target_bundles_drag_drop:
+      contact_us:
+        weight: 2
+        enabled: false
+      faq:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

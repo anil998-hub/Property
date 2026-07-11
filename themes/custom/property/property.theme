@@ -143,6 +143,25 @@ function property_preprocess_node(&$variables) {
     ];
   }
 
+   if ($node->getType() == 'faq') {
+    $variables['contact_form'] = [
+      '#type' => 'webform',
+      '#webform' => 'property_contact_form',
+      '#ajax' => [
+        'callback' => 'property_webform_ajax_callback',  // कस्टम callback
+        'wrapper' => 'webform-wrapper',  // DOM wrapper ID
+        'method' => 'replace',
+        'effect' => 'fade',
+      ],
+      '#default_data' => [
+        'property_nid' => $node->id(),
+        'property_title' => $node->label(),
+      ],
+      '#entity_type' => 'node',
+      '#entity_id' => $node->id(),
+    ];
+  }
+
   if ($node->getType() == 'luxury_listings') {
     // Get related properties
     $related_properties = property_get_related_properties($node, 6);

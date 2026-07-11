@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.luxury_listings.field_beds
     - field.field.node.luxury_listings.field_city
     - field.field.node.luxury_listings.field_city_image
+    - field.field.node.luxury_listings.field_contact_us
     - field.field.node.luxury_listings.field_deatils
     - field.field.node.luxury_listings.field_description
     - field.field.node.luxury_listings.field_flats
@@ -24,6 +25,7 @@ dependencies:
     - image.style.wide
     - node.type.luxury_listings
   module:
+    - entity_reference_revisions
     - file
     - image
     - link
@@ -77,6 +79,15 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 12
+    region: content
+  field_contact_us:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_deatils:
     type: link

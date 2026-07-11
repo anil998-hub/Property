@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.luxury_listings.field_beds
     - field.field.node.luxury_listings.field_city
     - field.field.node.luxury_listings.field_city_image
+    - field.field.node.luxury_listings.field_contact_us
     - field.field.node.luxury_listings.field_deatils
     - field.field.node.luxury_listings.field_description
     - field.field.node.luxury_listings.field_flats
@@ -62,6 +63,7 @@ hidden:
   field_beds: true
   field_city: true
   field_city_image: true
+  field_contact_us: true
   field_deatils: true
   field_description: true
   field_flats: true

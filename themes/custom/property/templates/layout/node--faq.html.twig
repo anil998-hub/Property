@@ -1,0 +1,85 @@
+<section class="flat-title">
+	<div class="tf-container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="title-inner">
+					<ul class="breadcrumb">
+						<li>
+							<a class="home fw-6 text-color-3" href="/">Home</a>
+						</li>
+						<li>{{ node.title.value|striptags|trim }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="main-content tf-spacing-6 header-fixed">
+	<section class="section-faq">
+		<div class="tf-container">
+			<div class="row">
+				<div class="col-xl-8 col-lg-7">
+					<div class="heading-section mb-48">
+						<h2 class="title">{{ node.title.value|striptags|trim }}</h2>
+					</div>
+					<div class="tf-faq mb-49">
+						<h3 class="fw-8 title mb-24">Overview</h3>
+						
+    {# Check if field_contact_us exists and has content #}
+    {% if node.field_contact_us and node.field_contact_us.entity %}
+      
+      <div class="field-contact-us">
+        
+        <ul class="box-faq" id="wrapper-faq">
+          {% for item in node.field_contact_us %}
+            {% set paragraph = item.entity %}
+            
+            <li class="faq-item">
+              {% set unique_id = 'accordion-faq-' ~ loop.index %}
+              
+              <a href="#{{ unique_id }}" 
+                 class="faq-header h6 collapsed" 
+                 data-bs-toggle="collapse" 
+                 aria-expanded="false" 
+                 aria-controls="{{ unique_id }}">
+                {{ paragraph.field_title.value|default('FAQ Question') }}
+                    <i class="fas fa-chevron-down"></i>
+              </a>
+              
+              <div id="{{ unique_id }}" 
+                   class="collapse" 
+                   data-bs-parent="#wrapper-faq">
+                {{ paragraph.field_description.value|raw  }}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+    {% endif %}
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-5">
+					<div class="tf-sidebar sticky-sidebar">
+						<h4 class="heading-title mb-30">Contact Sel</h4>
+
+					
+					{% if contact_form is defined and contact_form %}
+						{{ contact_form }}
+					{% endif %}
+						{{ node.field_description.value|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="section-contact-help">
+		<div class="tf-container">
+			<div class="row">
+				<div class="col-12">
+					{{ node.body.value|raw }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -20,6 +20,7 @@ node_search:
       trading: trading
       webform: webform
       work_together: work_together
+      faq: faq
     languages:
       en-gb: en-gb
       und: und
@@ -33,3 +34,11 @@ node_search:
     position: disabled
     label: 'Filter the results'
     any: '- Any -'
+help_search:
+  advanced:
+    types:
+      faq: faq
+user_search:
+  advanced:
+    types:
+      faq: faq
