@@ -606,9 +606,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						{# <div class="heading-section mb-48">
 																		<h2 class="title">{{ node.title.value|striptags|trim }}</h2>
 																	</div> #}
-						{% if node.field_contact_us and node.field_contact_us.entity %}
+						{% if node.field_contact_us and not node.field_contact_us.isEmpty() %}
 							<div class="tf-faq mb-49">
-								<h3 class="fw-8 title mb-24">FAQS</h3>
+								<h3 class="fw-8 title mb-24">FAQ</h3>
 
 								{# Check if field_contact_us exists and has content #}
 
