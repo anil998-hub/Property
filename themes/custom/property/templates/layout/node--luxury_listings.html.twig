@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
 												</a>
 
 												<div id="{{ unique_id }}" class="collapse" data-bs-parent="#wrapper-faq">
-													<p class="faq-body">{{ paragraph.field_description.value|default('FAQ Answer')  }}</p>
+													<p class="faq-body">{{ paragraph.field_description.value|raw  }}</p>
 												</div>
 											</li>
 										{% endfor %}
