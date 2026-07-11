@@ -1,0 +1,29 @@
+uuid: 87b82d9a-bd7b-411b-a335-ab99f57e9f0e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - views.view.property_details
+  module:
+    - system
+    - views
+  theme:
+    - property
+id: property_views_block__property_details_block_2
+theme: property
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:property_details-block_2'
+settings:
+  id: 'views_block:property_details-block_2'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /flats-in-tapukara

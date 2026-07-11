@@ -1,0 +1,14 @@
+uuid: cf2e5f8d-953b-4d09-b1ab-980940b1240a
+langcode: en-gb
+status: true
+dependencies: {  }
+name: property_thumbnail
+label: property_thumbnail
+effects:
+  5d47544c-61de-4629-94d7-bf7fbff9343d:
+    uuid: 5d47544c-61de-4629-94d7-bf7fbff9343d
+    id: image_resize
+    weight: 1
+    data:
+      width: 400
+      height: 300
