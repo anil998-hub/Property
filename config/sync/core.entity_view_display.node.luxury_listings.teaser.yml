@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.luxury_listings.field_money
     - field.field.node.luxury_listings.field_properties
     - field.field.node.luxury_listings.field_property_details
+    - field.field.node.luxury_listings.field_real_time_seos
     - field.field.node.luxury_listings.field_rooms
     - field.field.node.luxury_listings.field_sqft
     - field.field.node.luxury_listings.field_trade
@@ -72,6 +73,7 @@ hidden:
   field_money: true
   field_properties: true
   field_property_details: true
+  field_real_time_seos: true
   field_rooms: true
   field_sqft: true
   field_trade: true

@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.luxury_listings.field_money
     - field.field.node.luxury_listings.field_properties
     - field.field.node.luxury_listings.field_property_details
+    - field.field.node.luxury_listings.field_real_time_seos
     - field.field.node.luxury_listings.field_rooms
     - field.field.node.luxury_listings.field_sqft
     - field.field.node.luxury_listings.field_trade
@@ -33,6 +34,7 @@ dependencies:
     - options
     - text
     - user
+    - yoast_seo
 id: node.luxury_listings.default
 targetEntityType: node
 bundle: luxury_listings
@@ -163,6 +165,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 16
+    region: content
+  field_real_time_seos:
+    type: yoastseo_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_rooms:
     type: string

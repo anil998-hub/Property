@@ -1,0 +1,19 @@
+uuid: edd890e3-c543-4df5-a961-f9bfaf387ed0
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+    - yoast_seo
+id: node.field_real_time_seos
+field_name: field_real_time_seos
+entity_type: node
+type: yoast_seo
+settings: {  }
+module: yoast_seo
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -21,6 +21,8 @@ elements: |-
     '#type': tel
     '#title': 'Mobile Number'
     '#required': true
+    '#pattern': '^[0-9]+$'
+    '#pattern_error': 'Please enter only numbers (0-9).'
   message:
     '#type': textarea
     '#title': message

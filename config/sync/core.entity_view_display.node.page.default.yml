@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.field_metatag
+    - field.field.node.page.field_real_time_seo
     - node.type.page
   module:
     - metatag
     - text
     - user
+    - yoast_seo
 _core:
   default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
 id: node.page.default
@@ -30,6 +32,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_real_time_seo:
+    type: yoastseo_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     weight: 101

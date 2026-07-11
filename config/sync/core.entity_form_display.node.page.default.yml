@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.field_metatag
+    - field.field.node.page.field_real_time_seo
     - node.type.page
   module:
     - metatag
     - path
     - text
+    - yoast_seo
 _core:
   default_config_hash: SfpLhPExzvR0MgFp0Wp7CrmgEnhcqQ-fXIWFhbf4ue0
 id: node.page.default
@@ -40,6 +42,16 @@ content:
     settings:
       sidebar: true
       use_details: true
+    third_party_settings: {  }
+  field_real_time_seo:
+    type: yoast_seo_widget
+    weight: 125
+    region: content
+    settings:
+      edit_title: false
+      edit_description: false
+      render_theme: null
+      render_view_mode: default
     third_party_settings: {  }
   langcode:
     type: language_select
