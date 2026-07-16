@@ -18,7 +18,7 @@ plugin: 'views_block:flats-block_1'
 settings:
   id: 'views_block:flats-block_1'
   label: ''
-  label_display: visible
+  label_display: '0'
   provider: views
   views_label: ''
   items_per_page: none
@@ -26,4 +26,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /flats-in-tapukara
+    pages: /2-bhk-flat-bhiwadi
