@@ -47,138 +47,95 @@
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token }}">
    <style>
-      
-        /* ---- floating panel : RIGHT side, only WhatsApp + Call ---- */
-        .contact-float-right {
-            position: fixed;
-            bottom: 36px;
-            right: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 16px;
-            z-index: 999;
-            pointer-events: none; /* container non-blocking, children clickable */
-        }
+    .contact-float-right {
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
 
-        .contact-float-right > * {
-            pointer-events: auto;
-        }
+/* Circular button */
+.action-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    transition: .3s;
+}
 
-        /* each button: image‑like (icon + label) */
-        .action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            padding: 16px 28px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            background: #ffffff;
-            color: #1a2634;
-            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
-            transition: 0.15s ease;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            background: rgba(255, 255, 255, 0.92);
-            letter-spacing: 0.2px;
-            min-width: 160px;
-            box-sizing: border-box;
-        }
+/* Hover effect */
+.action-btn:hover {
+    transform: scale(1.08);
+}
 
-        .action-btn i {
-            font-size: 2.0rem;
-            width: 2.0rem;
-            text-align: center;
-        }
+/* Icon size */
+.action-btn i {
+    font-size: 30px;
+}
 
-        /* WhatsApp brand */
-        .action-btn.whatsapp {
-            background: #25D366;
-            border-color: #1da85c;
-            color: white;
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
-        }
+/* WhatsApp */
+.whatsapp i {
+    color: #25D366;
+}
 
-        .action-btn.whatsapp i {
-            color: white;
-        }
+/* Call */
+.call i {
+    color: #25D366;
+}
 
-        /* Call brand */
-        .action-btn.call {
-            background: #1a8cff;
-            border-color: #0a6edb;
-            color: white;
-            box-shadow: 0 8px 22px rgba(26, 140, 255, 0.35);
-        }
+/* Desktop - Only WhatsApp */
+@media (min-width:768px){
+    #callnowbutton{
+        display:none;
+    }
+}
 
-        .action-btn.call i {
-            color: white;
-        }
+/* Mobile - Show both */
+@media (max-width:767px){
+    #callnowbutton{
+        display:flex;
+    }
 
-        .action-btn:active {
-            transform: scale(0.94);
-        }
+    .action-btn{
+        width:50px;
+        height:50px;
+    }
 
-        /* responsive */
-        @media (max-width: 480px) {
-            .contact-float-right {
-                bottom: 28px;
-                right: 16px;
-                gap: 14px;
-            }
-            .action-btn {
-                padding: 14px 20px;
-                font-size: 1.0rem;
-                min-width: 130px;
-                gap: 10px;
-            }
-            .action-btn i {
-                font-size: 1.6rem;
-                width: 1.6rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .action-btn {
-                padding: 12px 16px;
-                font-size: 0.85rem;
-                min-width: 100px;
-                gap: 8px;
-            }
-            .action-btn i {
-                font-size: 1.3rem;
-                width: 1.3rem;
-            }
-            .contact-float-right {
-                right: 12px;
-                bottom: 20px;
-                gap: 12px;
-            }
-        }
-    </style>
+    .action-btn i{
+        font-size:28px;
+    }
+}
+ </style> 
 
 
-    <!-- ===== FLOATING RIGHT: ONLY WHATSAPP + CALL (no extra divs) ===== -->
+
+
     <div class="contact-float-right">
-        <!-- WhatsApp button (icon + label) -->
-        <a id="whatsAppButton" 
-           href="https://wa.me/919983605466/?text=Hi%2C%20I%27m%20interested" 
-           target="_blank" 
-           class="action-btn whatsapp">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
 
-        <!-- Call button (icon + label) -->
-        <a href="tel:9983605466" 
-           id="callnowbutton" 
-           class="action-btn call"
-           onclick="gtag('event', 'Call Now Button', {'event_category':'contact','event_label':'phone','action_type':'PHONE','button_type':'Single','action_value':'9983605466','action_label':'Call Now','cnb_version':'1.5.1'});">
-            <i class="fas fa-phone-alt"></i> Call Now
-        </a>
-    </div>
+    <a id="whatsAppButton"
+       href="https://wa.me/919983605466/?text=Hi%2C%20I%27m%20interested"
+       target="_blank"
+       class="action-btn whatsapp"
+       aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="tel:9983605466"
+       id="callnowbutton"
+       class="action-btn call"
+       aria-label="Call">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+</div>
 
     <!-- dummy gtag to prevent console error -->
     <script>
