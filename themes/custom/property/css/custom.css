@@ -113,24 +113,39 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
     display: none;
 } */
 
-
 .categories-item .icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 32px;
+}
+
+.categories-item .icon-box i {
+  display: block;
+}
+@media (max-width: 991px) {
+  .categories-item .icon-box {
+    margin: 0 16px;
+  }
+}
+/* .categories-item .icon-box {
   overflow: hidden;
   margin: 0 32px;
 }
 
 /* Mobile */
-.categories-item .icon-box {
+/* .categories-item .icon-box {
   overflow: hidden;
   margin: 0 16px;
-}
+} */
 
 /* Desktop */
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .categories-item .icon-box {
     margin: 0 32px;
   }
-}
+} */
 #views-exposed-form-trading-block-1 {
   display: none;  
 }
