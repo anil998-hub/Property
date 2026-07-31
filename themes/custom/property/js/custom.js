@@ -1,71 +1,52 @@
-
-
-
 (function ($, Drupal) {
-  'use strict';
 
-  /**
-   * Handles category click events and form submission
-   */
-  function initCategoryFilters() {
-    // Get the select element from your exposed form
-    const $formSelect = $('#edit-field-properties-target-id');
-    
-    // If the form select doesn't exist, stop the function
-    if (!$formSelect.length) {
-      return;
+  Drupal.behaviors.propertyCategoryTabs = {
+    attach: function (context) {
+      var slideSelector = '.view-id-property .swiper-slide[data-property-group]';
+
+      $(document)
+        .off('click.propertyTabs', slideSelector)
+        .on('click.propertyTabs', slideSelector, function (e) {
+          e.preventDefault();
+
+          var $slide = $(this);
+          var propertyGroup = $slide.data('property-group');
+          var $view = $slide.closest('.view-id-property');
+
+          if (!propertyGroup || !$view.length) {
+            return;
+          }
+
+          $view.find('.swiper-slide[data-property-group]').removeClass('active');
+          $slide.addClass('active');
+          $view.find('.categories-item').removeClass('active');
+          $slide.find('.categories-item').addClass('active');
+
+          $view.find('.property-group[data-property-group]').each(function () {
+            var isSelected = $(this).data('property-group') === propertyGroup;
+            $(this).prop('hidden', !isSelected);
+          });
+        });
+
+      $('.view-id-property', context).each(function () {
+        var $view = $(this);
+
+        if ($view.data('property-tabs-initialized')) {
+          return;
+        }
+
+        $view.data('property-tabs-initialized', true);
+
+        var $activeSlide = $view.find('.swiper-slide[data-property-group].active').first();
+        if (!$activeSlide.length) {
+          $activeSlide = $view.find('.swiper-slide[data-property-group]').first();
+        }
+
+        $activeSlide.trigger('click');
+      });
+
     }
-
-    // Get the currently selected value from the form
-    const currentSelectedValue = $formSelect.val();
-    
-    // Highlight the active category on page load based on form selection
-    if (currentSelectedValue && currentSelectedValue !== 'All') {
-      // Remove active class from all categories
-      $('.categories-item').removeClass('active');
-      // Add active class to the matching category
-      $(`.categories-item[id="${currentSelectedValue}"]`).addClass('active');
-    }
-
-    // Attach click event to all category items
-    $('.categories-item').off('click').on('click', function (e) {
-      // Prevent the default anchor behavior
-      e.preventDefault();
-
-      // Get the term id from the link's 'id' attribute (e.g., "1", "6")
-      const termId = $(this).attr('id');
-      
-      // Get the category name (optional)
-      const categoryName = $(this).find('h5').text();
-
-      if (termId && termId !== '') {
-        // Remove active class from all category items
-        $('.categories-item').removeClass('active');
-        
-        // Add active class to the clicked category
-        $(this).addClass('active');
-        
-        // Set the select option to the matching term id
-        $formSelect.val(termId);
-        
-        // Trigger a change event
-        $formSelect.trigger('change');
-        
-        // Submit the exposed form
-        $('#views-exposed-form-property-block-1').submit();
-      }
-    });
-  }
-
-  // Run when document is ready
-  $(document).ready(function () {
-    initCategoryFilters();
-  });
-
-  // Re-attach after AJAX calls (for Drupal views with AJAX)
-  $(document).ajaxComplete(function () {
-    initCategoryFilters();
-  });
+  };
 
 })(jQuery, Drupal);
 
@@ -476,58 +457,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ========== ROUTING LOGIC ==========
-    
-    // Option 1: Route on click using data attribute
-    document.querySelectorAll('.categories-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get the term ID from data attribute
-            const termId = this.dataset.termId;
-            
-            if (termId) {
-                // Redirect to property listing page with category filter
-                window.location.href = '/properties?category=' + termId;
-                // OR
-                // window.location.href = '/category/' + termId;
-                // OR for Drupal
-                // window.location.href = Drupal.url('properties/' + termId);
-            }
-        });
-    });
-
-    // Option 2: Route on click using ID (if data-term-id not available)
-    document.querySelectorAll('.categories-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get the ID from the element
-            const termId = this.id;
-            
-            if (termId) {
-                // Redirect
-                window.location.href = '/properties?category=' + termId;
-            }
-        });
-    });
-
-    // Option 3: Route to specific URL from href attribute
-    document.querySelectorAll('.categories-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            // Don't prevent default if using href
-            // Just let the browser follow the link
-            const href = this.getAttribute('href');
-            if (href && href !== '#') {
-                // Let the browser navigate naturally
-                return true;
-            }
-            
-            e.preventDefault();
-            const termId = this.dataset.termId || this.id;
-            window.location.href = '/properties?category=' + termId;
-        });
-    });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -738,11 +667,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   Drupal.behaviors.openGalleryOnSectionClick = {
     attach: function (context, settings) {
 
-      $('#gallery-swiper-started', context).once('gallery-click').on('click', function (e) {
+      $(once('gallery-click', '#gallery-swiper-started', context)).on('click', function (e) {
 
         // Don't trigger if user actually clicked an image/link
         if ($(e.target).closest('a[data-fancybox]').length) {
@@ -755,4 +684,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);

@@ -109,11 +109,28 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
     background-position: 50%;
     background-attachment: fixed;
 }
-#views-exposed-form-property-block-1 {
+/* #views-exposed-form-property-block-1 {
     display: none;
+} */
+
+
+.categories-item .icon-box {
+  overflow: hidden;
+  margin: 0 32px;
 }
 
+/* Mobile */
+.categories-item .icon-box {
+  overflow: hidden;
+  margin: 0 16px;
+}
 
+/* Desktop */
+@media (min-width: 992px) {
+  .categories-item .icon-box {
+    margin: 0 32px;
+  }
+}
 #views-exposed-form-trading-block-1 {
   display: none;  
 }
@@ -1512,4 +1529,7 @@ h2#related-properties-title {
   .search-test .image-style-wide {
     height: 170px !important;
   }
+}
+.property-group[hidden] {
+  display: none !important;
 }
