@@ -666,6 +666,14 @@ display:
           error_message: true
       style:
         type: default
+        options:
+          grouping:
+            -
+              field: field_properties
+              rendered: false
+              rendered_strip: false
+          row_class: pro_gr
+          default_row_class: false
       row:
         type: fields
       query:
@@ -748,8 +756,7 @@ display:
           admin_label: ''
           plugin_id: taxonomy_index_tid
           operator: or
-          value:
-            1: 1
+          value: {  }
           group: 1
           exposed: true
           expose:
