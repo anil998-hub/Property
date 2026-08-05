@@ -1,0 +1,7 @@
+uuid: 482245d4-a0e6-4e0b-a3d1-4a3d1341af25
+langcode: en-gb
+status: false
+dependencies: {  }
+formId: node_trading_form
+captchaType: default
+label: node_trading_form

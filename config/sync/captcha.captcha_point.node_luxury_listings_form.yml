@@ -1,0 +1,7 @@
+uuid: 94c37e4f-ddb8-4e97-9f78-d830d74b6853
+langcode: en-gb
+status: false
+dependencies: {  }
+formId: node_luxury_listings_form
+captchaType: default
+label: node_luxury_listings_form

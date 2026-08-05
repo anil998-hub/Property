@@ -33,6 +33,14 @@ Retrieved 2026-06-10, License - CC BY-SA 3.0
 .navigation li.has-child {
     position: relative;
 }
+
+.captcha__description {
+display: none;
+}
+
+#edit-captcha-response--description {
+  display: none;
+}
 .navigation li.has-child > a:after {
   transition: all .3s ease;
   position: absolute;

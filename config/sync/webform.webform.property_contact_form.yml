@@ -21,18 +21,25 @@ elements: |-
     '#type': tel
     '#title': 'Mobile Number'
     '#required': true
-    '#pattern': '^[0-9]+$'
+    '#pattern': '(\+91|0)?[0-9]{10}'
     '#pattern_error': 'Please enter only numbers (0-9).'
   message:
     '#type': textarea
     '#title': message
     '#required': true
+    '#counter_type': character
+    '#counter_minimum': 20
+    '#counter_maximum': 80
+    '#counter_maximum_message': '20-80 words'
   property_id:
     '#type': hidden
     '#title': 'Property ID'
   property_title:
     '#type': hidden
     '#title': 'Property Title'
+  captcha:
+    '#type': captcha
+    '#captcha_type': captcha/Math
 css: ''
 javascript: ''
 settings:

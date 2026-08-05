@@ -32,7 +32,7 @@ elements: |-
     '#placeholder': 'Your phone number'
     '#required': true
     '#required_error': 'plz enter phone number'
-    '#pattern': '^[6-9][0-9]{9}$'
+    '#pattern': '(\+91|0)?[0-9]{10}'
     '#pattern_error': 'Please enter a valid phone number like (555) 123-4567"'
   what_are_you_interested_in:
     '#type': select
